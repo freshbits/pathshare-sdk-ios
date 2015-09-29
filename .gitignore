@@ -1,0 +1,15 @@
+build/*
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.mode1
+*.mode2v3
+*.mode1v3
+xcuserdata
+Snapshots
+Builds/
+Screenshots/
+Frameworks/
+
+.DS_Store
+report.xml

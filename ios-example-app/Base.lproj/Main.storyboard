@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWv-qu-d00">
+                                <rect key="frame" x="185" y="205" width="230" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="34o-t1-Xsm"/>
+                                    <constraint firstAttribute="height" constant="50" id="Hn8-pE-Xhj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Create Session">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="createSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y6A-QR-Bq3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gct-rf-eNF">
+                                <rect key="frame" x="185" y="275" width="230" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5Ev-jP-UEy"/>
+                                    <constraint firstAttribute="width" constant="230" id="peM-Ve-IOe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Join Session">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZmL-m5-NZ5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7b3-d5-hOZ">
+                                <rect key="frame" x="185" y="345" width="230" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Msj-N8-tM3"/>
+                                    <constraint firstAttribute="width" constant="230" id="wvr-9G-eoO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Leave Session">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="leaveSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jEY-i9-gMO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iWv-qu-d00" firstAttribute="leading" secondItem="gct-rf-eNF" secondAttribute="leading" id="2jN-82-HF9"/>
+                            <constraint firstItem="gct-rf-eNF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5je-5W-PXz"/>
+                            <constraint firstItem="gct-rf-eNF" firstAttribute="top" secondItem="iWv-qu-d00" secondAttribute="bottom" constant="20" id="6hP-CD-yOg"/>
+                            <constraint firstItem="gct-rf-eNF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GuX-y7-jhM"/>
+                            <constraint firstItem="7b3-d5-hOZ" firstAttribute="leading" secondItem="gct-rf-eNF" secondAttribute="leading" id="Ucu-xo-m10"/>
+                            <constraint firstItem="7b3-d5-hOZ" firstAttribute="top" secondItem="gct-rf-eNF" secondAttribute="bottom" constant="20" id="p1Z-Iv-LUb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="createButton" destination="iWv-qu-d00" id="bvN-ui-lM2"/>
+                        <outlet property="joinButton" destination="gct-rf-eNF" id="UMu-IH-AKi"/>
+                        <outlet property="leaveButton" destination="7b3-d5-hOZ" id="kSv-rf-nQf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="411" y="450"/>
+        </scene>
+    </scenes>
+</document>
