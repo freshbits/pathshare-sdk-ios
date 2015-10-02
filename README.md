@@ -2,7 +2,7 @@
 
 **Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/developers).
 
-- [Requerements](#requirement)
+- [Requirements](#requirement)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
   - [Initialize Pathshare](#init-pathshare)
