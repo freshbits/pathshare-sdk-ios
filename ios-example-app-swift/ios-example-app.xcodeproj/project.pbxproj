@@ -14,6 +14,7 @@
 		E94A9A271BBC0ACA00B8F862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94A9A251BBC0ACA00B8F862 /* LaunchScreen.storyboard */; };
 		E94A9A351BBC8D9400B8F862 /* Pathshare.plist in Resources */ = {isa = PBXBuildFile; fileRef = E94A9A341BBC8D9400B8F862 /* Pathshare.plist */; settings = {ASSET_TAGS = (); }; };
 		E94A9A371BBC92DE00B8F862 /* PathshareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94A9A361BBC92DE00B8F862 /* PathshareSDK.framework */; settings = {ASSET_TAGS = (); }; };
+		E9D3E5971BBF2A6200FAC00D /* PathshareSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E94A9A361BBC92DE00B8F862 /* PathshareSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,6 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E9D3E5971BBF2A6200FAC00D /* PathshareSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
