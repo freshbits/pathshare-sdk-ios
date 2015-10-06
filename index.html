@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pathshare SDK for iOS by freshbits</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Pathshare SDK for iOS</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/freshbits/pathshare-sdk-ios" class="btn">View on GitHub</a>
+      <a href="https://github.com/freshbits/pathshare-sdk-ios/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/freshbits/pathshare-sdk-ios/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="pathshare-sdk-for-ios" class="anchor" href="#pathshare-sdk-for-ios" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pathshare SDK for iOS</h1>
+
+<p><strong>Pathshare</strong> is a realtime location sharing platform. For more information please visit the <a href="https://pathsha.re/developers">Pathshare Developer Page</a>.</p>
+
+<ul>
+<li><a href="#requirement">Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li>
+<a href="#basic-usage">Basic Usage</a>
+
+<ul>
+<li><a href="#init-pathshare">Initialize Pathshare</a></li>
+<li><a href="#save-username">Save Username</a></li>
+<li><a href="#create-session">Create Session</a></li>
+<li><a href="#join-session">Join Session</a></li>
+<li><a href="#leave-session">Leave Session</a></li>
+<li><a href="#find-session">Find Session</a></li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>PathshareSDK for iOS supports iOS 8.x and iOS 9.x.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>The installation of the <strong>Pathshare SDK</strong> is simple. Please follow the following steps:</p>
+
+<ol>
+<li>Drag and drop the <code>PathshareSDK.framework</code> you received upon registration into your project.</li>
+<li>Add the <code>PathshareSDK.framework</code> to the <em>Embedded Binaries</em> in the <em>general</em> tab of your target.</li>
+<li>Add the <code>NSLocationAlwaysUsageDescription</code> and the <code>NSMotionUsageDescription</code> keys with the corresponding descriptions to your <code>Info.plist</code> file.</li>
+</ol>
+
+<h2>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
+
+<h3>
+<a id="initialization" class="anchor" href="#initialization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initialization</h3>
+
+<p>In order to initialize the Pathshare SDK, create a file named <code>pathshare.plist</code> inside your project and add your account token:</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span><span class="pl-e"> encoding</span>=<span class="pl-s"><span class="pl-pds">"</span>UTF-8<span class="pl-pds">"</span></span>?&gt;
+&lt;!<span class="pl-k">DOCTYPE</span> <span class="pl-v">plist</span> PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;<span class="pl-ent">plist</span> <span class="pl-e">version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">dict</span>&gt;
+    &lt;<span class="pl-ent">key</span>&gt;account_token&lt;/<span class="pl-ent">key</span>&gt;
+    &lt;<span class="pl-ent">string</span>&gt;your PathshareSDK account token&lt;/<span class="pl-ent">string</span>&gt;
+&lt;/<span class="pl-ent">dict</span>&gt;
+&lt;/<span class="pl-ent">plist</span>&gt;
+</pre></div>
+
+<p>Next, add the following to the <code>application:didFinishLaunchingWithOptions:</code> method of your <code>AppDelegate</code> class:</p>
+
+<h6>
+<a id="objective-c" class="anchor" href="#objective-c" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>- (<span class="pl-k">BOOL</span>)application:(UIApplication *)application didFinishLaunchingWithOptions:(<span class="pl-c1">NSDictionary</span> *)launchOptions
+{
+    [<span class="pl-v">self</span> <span class="pl-c1">initPathshare</span>];
+    <span class="pl-k">return</span> <span class="pl-c1">YES</span>;
+}
+
+...
+
+- (<span class="pl-k">void</span>)initPathshare
+{
+    <span class="pl-c1">NSString</span> *pathshare = [<span class="pl-c1">NSBundle</span>.mainBundle <span class="pl-c1">pathForResource:</span><span class="pl-s"><span class="pl-pds">@"</span>pathshare<span class="pl-pds">"</span></span> <span class="pl-c1">ofType:</span><span class="pl-s"><span class="pl-pds">@"</span>plist<span class="pl-pds">"</span></span>];
+    <span class="pl-c1">NSDictionary</span> *config = [[<span class="pl-c1">NSDictionary</span> <span class="pl-c1">alloc</span>] <span class="pl-c1">initWithContentsOfFile:</span>pathshare];
+
+    [Pathshare <span class="pl-c1">setAccountToken:</span>config[<span class="pl-s"><span class="pl-pds">@"</span>account_token<span class="pl-pds">"</span></span>]];
+}</pre></div>
+
+<h6>
+<a id="swift" class="anchor" href="#swift" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">func</span> <span class="pl-en">application</span>(application: UIApplication, didFinishLaunchingWithOptions <span class="pl-smi">launchOptions</span>: [NSObject: <span class="pl-c1">AnyObject</span>]?) <span class="pl-k">-&gt;</span> <span class="pl-c1">Bool</span> {
+    initPathshare()
+    <span class="pl-k">return</span> <span class="pl-c1">true</span>
+}
+
+<span class="pl-k">...</span>
+
+<span class="pl-k">private</span> <span class="pl-k">func</span> <span class="pl-en">initPathshare</span>() {
+    <span class="pl-k">let</span> pathshare <span class="pl-k">=</span> NSBundle<span class="pl-k">.</span>mainBundle()<span class="pl-k">.</span>pathForResource(<span class="pl-s"><span class="pl-pds">"</span>Pathshare<span class="pl-pds">"</span></span>, ofType:<span class="pl-s"><span class="pl-pds">"</span>plist<span class="pl-pds">"</span></span>) <span class="pl-k">as</span> <span class="pl-c1">String</span><span class="pl-k">!</span>
+    <span class="pl-k">let</span> config <span class="pl-k">=</span> NSDictionary<span class="pl-k">.</span><span class="pl-k">init</span>(contentsOfFile: pathshare) <span class="pl-k">as</span> NSDictionary<span class="pl-k">!</span>
+    Pathshare<span class="pl-k">.</span>setAccountToken(config<span class="pl-k">!.</span>valueForKey(<span class="pl-s"><span class="pl-pds">"</span>account_token<span class="pl-pds">"</span></span>) <span class="pl-k">as!</span> <span class="pl-c1">String</span>)
+}</pre></div>
+
+<h3>
+<a id="save-username" class="anchor" href="#save-username" aria-hidden="true"><span class="octicon octicon-link"></span></a>Save Username</h3>
+
+<p>Before creating a session, you need to set a username:</p>
+
+<h6>
+<a id="objective-c-1" class="anchor" href="#objective-c-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>[Pathshare <span class="pl-c1">saveUserName:</span><span class="pl-s"><span class="pl-pds">@"</span>Candice<span class="pl-pds">"</span></span>
+      <span class="pl-c1">completionHandler:</span>^(<span class="pl-c1">NSError</span> *error) {
+          <span class="pl-k">if</span> (error) {
+              <span class="pl-c">// ...</span>
+          } <span class="pl-k">else</span> {
+              <span class="pl-c">// ...</span>
+          }
+      }
+ ];</pre></div>
+
+<h6>
+<a id="swift-1" class="anchor" href="#swift-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre>Pathshare<span class="pl-k">.</span>saveUserName(<span class="pl-s"><span class="pl-pds">"</span>SDK User ios<span class="pl-pds">"</span></span>) { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span>
+    <span class="pl-k">if</span> error <span class="pl-k">!=</span> <span class="pl-c1">nil</span> {
+        <span class="pl-c">// ...</span>
+    } <span class="pl-k">else</span> {
+        <span class="pl-c">// ...</span>
+    }
+}</pre></div>
+
+<h3>
+<a id="create-session" class="anchor" href="#create-session" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create Session</h3>
+
+<p>Use the session initializer to create a session:</p>
+
+<h6>
+<a id="objective-c-2" class="anchor" href="#objective-c-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>Session *session = [[Session <span class="pl-c1">alloc</span>] <span class="pl-c1">init</span>];
+session.expirationDate = expirationDate;
+session.name = <span class="pl-s"><span class="pl-pds">@"</span>Shopping<span class="pl-pds">"</span></span>;
+session.trackingMode = PSTrackingModeSmart;</pre></div>
+
+<h6>
+<a id="swift-2" class="anchor" href="#swift-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">var</span> session <span class="pl-k">=</span> Session<span class="pl-k">.</span><span class="pl-k">init</span>()
+<span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>expirationDate <span class="pl-k">=</span> expirationDate
+<span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>Shopping<span class="pl-pds">"</span></span>
+<span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>trackingMode <span class="pl-k">=</span> PSTrackingMode<span class="pl-k">.</span>Smart</pre></div>
+
+<p>A session must have an expiration date and a name. Optionally, you can specify a tracking mode to configure the behavior of the location tracker. The following tracking modes are available:</p>
+
+<table>
+<thead>
+<tr>
+<th>Tracking Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PSTrackingModeSmart</code></td>
+<td>Adapts intelligently to the environment and usage of the device. Includes awareness of battery level, travel speed and motion activity.</td>
+</tr>
+<tr>
+<td><code>PSTrackingModeEco</code></td>
+<td>Static mode providing constant tracking data with very low accuracy (several kilometers) and great distance between single locations and ensuring maximum battery life.</td>
+</tr>
+<tr>
+<td><code>PSTrackingModeApproximate</code></td>
+<td>Static mode providing constant tracking data with low accuracy (several hundred meters) and middle distance between single locations. Useful when a low battery drain is a important criteria.</td>
+</tr>
+<tr>
+<td><code>PSTrackingModeAccurate</code></td>
+<td>Static mode providing constant tracking with the highest accuracy possible (few meters) and small distances between locations. Useful for scenarios where a high accuracy is an essential requirement.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Make sure to save the session after initializing:</p>
+
+<h6>
+<a id="objective-c-3" class="anchor" href="#objective-c-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>[session <span class="pl-c1">save:</span>^(<span class="pl-c1">NSError</span> *error) { ... }];
+
+session.identifier <span class="pl-c">// =&gt; 3fd919fe824d8e7b78e2c11c1570a6f168d2c...</span>
+[session <span class="pl-c1">isExpired</span>] <span class="pl-c">// =&gt; false</span></pre></div>
+
+<h6>
+<a id="swift-3" class="anchor" href="#swift-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>save { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span> <span class="pl-k">...</span> }
+
+session<span class="pl-k">.</span>identifier <span class="pl-c">// =&gt; 3fd919fe824d8e7b78e2c11c1570a6f168d2c...</span>
+session<span class="pl-k">.</span>isExpired() <span class="pl-c">// =&gt; false</span></pre></div>
+
+<h4>
+<a id="expiration" class="anchor" href="#expiration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Expiration</h4>
+
+<p>In order to react to the expiration of the session, implement the <code>SessionExpirationDelegate</code> protocol in your class:</p>
+
+<h6>
+<a id="objective-c-4" class="anchor" href="#objective-c-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre><span class="pl-k">@interface</span> <span class="pl-en">ViewController</span> : <span class="pl-e">UIViewController</span> &lt;SessionExpirationDelegate&gt;
+    <span class="pl-c">// ...</span>
+<span class="pl-k">@end</span></pre></div>
+
+<h6>
+<a id="swift-4" class="anchor" href="#swift-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">class</span> ViewController: UIViewController, SessionExpirationDelegate { <span class="pl-k">...</span> }</pre></div>
+
+<p>Then set the <code>delegate</code> on your session instance:</p>
+
+<h6>
+<a id="objective-c-5" class="anchor" href="#objective-c-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>Session *session = [[Session <span class="pl-c1">alloc</span>] <span class="pl-c1">init</span>];
+session.delegate = self;</pre></div>
+
+<h6>
+<a id="swift-5" class="anchor" href="#swift-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">let</span> session <span class="pl-k">=</span> Session<span class="pl-k">.</span><span class="pl-k">init</span>();
+session<span class="pl-k">.</span>delegate <span class="pl-k">=</span> <span class="pl-k">self</span>;</pre></div>
+
+<p>Finally, implement the <code>sessionDidExpire</code> method in your class to react to the expiration event:</p>
+
+<h6>
+<a id="objective-c-6" class="anchor" href="#objective-c-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>- (<span class="pl-k">void</span>)sessionDidExpire { ... }</pre></div>
+
+<h6>
+<a id="swift-6" class="anchor" href="#swift-6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">func</span> <span class="pl-en">sessionDidExpire</span>() { <span class="pl-k">...</span> }</pre></div>
+
+<h4>
+<a id="destination" class="anchor" href="#destination" aria-hidden="true"><span class="octicon octicon-link"></span></a>Destination</h4>
+
+<p>Optionally, you can add a destination to the session. Sessions with destination will show the estimated time of arrival (ETA) for each user. The destination identifier is used to group sessions by destination.</p>
+
+<h6>
+<a id="objective-c-7" class="anchor" href="#objective-c-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>Destination *destination = [[Destination <span class="pl-c1">alloc</span>] <span class="pl-c1">init</span>];
+destination.identifier = <span class="pl-s"><span class="pl-pds">@"</span>W2342<span class="pl-pds">"</span></span>;
+destination.latitude = <span class="pl-c1">47.378178</span>;
+destination.longitude = <span class="pl-c1">8.539256</span>;
+
+Session *session = [[Session <span class="pl-c1">alloc</span>] <span class="pl-c1">init</span>];
+<span class="pl-c">//...</span>
+session.destination = destination;</pre></div>
+
+<h6>
+<a id="swift-7" class="anchor" href="#swift-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">let</span> destination <span class="pl-k">=</span> Destination<span class="pl-k">.</span><span class="pl-k">init</span>();
+destination<span class="pl-k">.</span>identifier <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>W2342<span class="pl-pds">"</span></span>;
+destination<span class="pl-k">.</span>latitude <span class="pl-k">=</span> <span class="pl-c1">47</span><span class="pl-k">.</span><span class="pl-c1">378178</span>;
+destination<span class="pl-k">.</span>longitude <span class="pl-k">=</span> <span class="pl-c1">8</span><span class="pl-k">.</span><span class="pl-c1">539256</span>;
+
+<span class="pl-k">let</span> session <span class="pl-k">=</span> Session<span class="pl-k">.</span><span class="pl-k">init</span>();
+<span class="pl-c">//...</span>
+session<span class="pl-k">.</span>destination <span class="pl-k">=</span> destination;</pre></div>
+
+<h3>
+<a id="join-session" class="anchor" href="#join-session" aria-hidden="true"><span class="octicon octicon-link"></span></a>Join Session</h3>
+
+<p>To join the session you created, call the <code>joinUser:</code> method on the session object:</p>
+
+<h6>
+<a id="objective-c-8" class="anchor" href="#objective-c-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>[session <span class="pl-c1">joinUser:</span>^(<span class="pl-c1">NSError</span> *error) { ... }];
+
+[session <span class="pl-c1">isUserJoined</span>] <span class="pl-c">// =&gt; true</span></pre></div>
+
+<h6>
+<a id="swift-8" class="anchor" href="#swift-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>joinUser { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span> { <span class="pl-k">...</span> };
+
+session<span class="pl-k">.</span>isUserJoined() <span class="pl-c">// =&gt; true</span></pre></div>
+
+<p>This call will add your Pathshare user to the session and you will be able to see his location in realtime on a map in the Pathshare Professional web interface.</p>
+
+<h3>
+<a id="leave-session" class="anchor" href="#leave-session" aria-hidden="true"><span class="octicon octicon-link"></span></a>Leave Session</h3>
+
+<p>In order to stop sending user locations and remove the user from the session, call the <code>leaveUser:</code> method:</p>
+
+<h6>
+<a id="objective-c-9" class="anchor" href="#objective-c-9" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>[session <span class="pl-c1">leaveUser:</span>^(<span class="pl-c1">NSError</span> *error) { ... }];</pre></div>
+
+<h6>
+<a id="swift-9" class="anchor" href="#swift-9" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>leaveUser { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span> { <span class="pl-k">...</span> };</pre></div>
+
+<h3>
+<a id="find-session" class="anchor" href="#find-session" aria-hidden="true"><span class="octicon octicon-link"></span></a>Find Session</h3>
+
+<p>To find an existing session, use the <code>findSessionWithIdentifier:completionHandler:</code> method with the corresponding session identifier:</p>
+
+<h6>
+<a id="objective-c-10" class="anchor" href="#objective-c-10" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective-C</h6>
+
+<div class="highlight highlight-source-objc"><pre>[Pathshare <span class="pl-c1">findSessionWithIdentifier:</span><span class="pl-s"><span class="pl-pds">@"</span>e2e422<span class="pl-pds">"</span></span>
+                   <span class="pl-c1">completionHandler:</span>^(Session *session, <span class="pl-c1">NSError</span> *error) {
+                       <span class="pl-k">if</span> (session) {
+                           self.<span class="pl-smi">session</span> = session;
+                       }
+                   }];</pre></div>
+
+<h6>
+<a id="swift-10" class="anchor" href="#swift-10" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
+
+<div class="highlight highlight-source-swift"><pre>Pathshare<span class="pl-k">.</span>findSessionWithIdentifier(<span class="pl-s"><span class="pl-pds">"</span>e2e422<span class="pl-pds">"</span></span>) { (session: Session<span class="pl-k">!</span>, error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span>
+    <span class="pl-k">if</span> session <span class="pl-k">!=</span> <span class="pl-c1">nil</span> {
+        <span class="pl-k">self</span><span class="pl-k">.</span>session <span class="pl-k">=</span> session
+    }
+}</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/freshbits/pathshare-sdk-ios">Pathshare SDK for iOS</a> is maintained by <a href="https://github.com/freshbits">freshbits</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
