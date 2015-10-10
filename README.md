@@ -121,9 +121,9 @@ session.trackingMode = PSTrackingModeSmart;
 ###### Swift
 ```swift
 var session = Session.init()
-self.session.expirationDate = expirationDate
-self.session.name = "Shopping"
-self.session.trackingMode = PSTrackingMode.Smart
+session.expirationDate = expirationDate
+session.name = "Shopping"
+session.trackingMode = PSTrackingMode.Smart
 ```
 
 A session must have an expiration date and a name. Optionally, you can specify a tracking mode to configure the behavior of the location tracker. The following tracking modes are available:
@@ -147,7 +147,7 @@ session.identifier // => 3fd919fe824d8e7b78e2c11c1570a6f168d2c...
 
 ###### Swift
 ```swift
-self.session.save { (error: NSError!) -> Void in ... }
+session.save { (error: NSError!) -> Void in ... }
 
 session.identifier // => 3fd919fe824d8e7b78e2c11c1570a6f168d2c...
 session.isExpired() // => false
@@ -179,8 +179,8 @@ session.delegate = self;
 
 ###### Swift
 ```swift
-let session = Session.init();
-session.delegate = self;
+var session = Session.init()
+session.delegate = self
 ```
 
 Finally, implement the `sessionDidExpire` method in your class to react to the expiration event:
@@ -213,14 +213,14 @@ session.destination = destination;
 
 ###### Swift
 ```swift
-let destination = Destination.init();
-destination.identifier = "W2342";
-destination.latitude = 47.378178;
-destination.longitude = 8.539256;
+var destination = Destination.init()
+destination.identifier = "W2342"
+destination.latitude = 47.378178
+destination.longitude = 8.539256
 
-let session = Session.init();
+var session = Session.init()
 //...
-session.destination = destination;
+session.destination = destination
 ```
 
 ### Join Session
@@ -236,7 +236,7 @@ To join the session you created, call the `joinUser:` method on the session obje
 
 ###### Swift
 ```swift
-self.session.joinUser { (error: NSError!) -> Void in { ... };
+session.joinUser { (error: NSError!) -> Void in ... }
 
 session.isUserJoined() // => true
 ```
@@ -254,7 +254,7 @@ In order to stop sending user locations and remove the user from the session, ca
 
 ###### Swift
 ```swift
-self.session.leaveUser { (error: NSError!) -> Void in { ... };
+session.leaveUser { (error: NSError!) -> Void in ... }
 ```
 
 ### Find Session
