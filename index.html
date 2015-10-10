@@ -158,9 +158,9 @@ session.trackingMode = PSTrackingModeSmart;</pre></div>
 <a id="swift-2" class="anchor" href="#swift-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
 
 <div class="highlight highlight-source-swift"><pre><span class="pl-k">var</span> session <span class="pl-k">=</span> Session<span class="pl-k">.</span><span class="pl-k">init</span>()
-<span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>expirationDate <span class="pl-k">=</span> expirationDate
-<span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>Shopping<span class="pl-pds">"</span></span>
-<span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>trackingMode <span class="pl-k">=</span> PSTrackingMode<span class="pl-k">.</span>Smart</pre></div>
+session<span class="pl-k">.</span>expirationDate <span class="pl-k">=</span> expirationDate
+session<span class="pl-k">.</span>name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>Shopping<span class="pl-pds">"</span></span>
+session<span class="pl-k">.</span>trackingMode <span class="pl-k">=</span> PSTrackingMode<span class="pl-k">.</span>Smart</pre></div>
 
 <p>A session must have an expiration date and a name. Optionally, you can specify a tracking mode to configure the behavior of the location tracker. The following tracking modes are available:</p>
 
@@ -204,7 +204,7 @@ session.identifier <span class="pl-c">// =&gt; 3fd919fe824d8e7b78e2c11c1570a6f16
 <h6>
 <a id="swift-3" class="anchor" href="#swift-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
 
-<div class="highlight highlight-source-swift"><pre><span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>save { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span> <span class="pl-k">...</span> }
+<div class="highlight highlight-source-swift"><pre>session<span class="pl-k">.</span>save { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span> <span class="pl-k">...</span> }
 
 session<span class="pl-k">.</span>identifier <span class="pl-c">// =&gt; 3fd919fe824d8e7b78e2c11c1570a6f168d2c...</span>
 session<span class="pl-k">.</span>isExpired() <span class="pl-c">// =&gt; false</span></pre></div>
@@ -237,8 +237,8 @@ session.delegate = self;</pre></div>
 <h6>
 <a id="swift-5" class="anchor" href="#swift-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
 
-<div class="highlight highlight-source-swift"><pre><span class="pl-k">let</span> session <span class="pl-k">=</span> Session<span class="pl-k">.</span><span class="pl-k">init</span>();
-session<span class="pl-k">.</span>delegate <span class="pl-k">=</span> <span class="pl-k">self</span>;</pre></div>
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">var</span> session <span class="pl-k">=</span> Session<span class="pl-k">.</span><span class="pl-k">init</span>()
+session<span class="pl-k">.</span>delegate <span class="pl-k">=</span> <span class="pl-k">self</span></pre></div>
 
 <p>Finally, implement the <code>sessionDidExpire</code> method in your class to react to the expiration event:</p>
 
@@ -272,14 +272,14 @@ session.destination = destination;</pre></div>
 <h6>
 <a id="swift-7" class="anchor" href="#swift-7" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
 
-<div class="highlight highlight-source-swift"><pre><span class="pl-k">let</span> destination <span class="pl-k">=</span> Destination<span class="pl-k">.</span><span class="pl-k">init</span>();
-destination<span class="pl-k">.</span>identifier <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>W2342<span class="pl-pds">"</span></span>;
-destination<span class="pl-k">.</span>latitude <span class="pl-k">=</span> <span class="pl-c1">47</span><span class="pl-k">.</span><span class="pl-c1">378178</span>;
-destination<span class="pl-k">.</span>longitude <span class="pl-k">=</span> <span class="pl-c1">8</span><span class="pl-k">.</span><span class="pl-c1">539256</span>;
+<div class="highlight highlight-source-swift"><pre><span class="pl-k">var</span> destination <span class="pl-k">=</span> Destination<span class="pl-k">.</span><span class="pl-k">init</span>()
+destination<span class="pl-k">.</span>identifier <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>W2342<span class="pl-pds">"</span></span>
+destination<span class="pl-k">.</span>latitude <span class="pl-k">=</span> <span class="pl-c1">47</span><span class="pl-k">.</span><span class="pl-c1">378178</span>
+destination<span class="pl-k">.</span>longitude <span class="pl-k">=</span> <span class="pl-c1">8</span><span class="pl-k">.</span><span class="pl-c1">539256</span>
 
-<span class="pl-k">let</span> session <span class="pl-k">=</span> Session<span class="pl-k">.</span><span class="pl-k">init</span>();
+<span class="pl-k">var</span> session <span class="pl-k">=</span> Session<span class="pl-k">.</span><span class="pl-k">init</span>()
 <span class="pl-c">//...</span>
-session<span class="pl-k">.</span>destination <span class="pl-k">=</span> destination;</pre></div>
+session<span class="pl-k">.</span>destination <span class="pl-k">=</span> destination</pre></div>
 
 <h3>
 <a id="join-session" class="anchor" href="#join-session" aria-hidden="true"><span class="octicon octicon-link"></span></a>Join Session</h3>
@@ -296,7 +296,7 @@ session<span class="pl-k">.</span>destination <span class="pl-k">=</span> destin
 <h6>
 <a id="swift-8" class="anchor" href="#swift-8" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
 
-<div class="highlight highlight-source-swift"><pre><span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>joinUser { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span> { <span class="pl-k">...</span> };
+<div class="highlight highlight-source-swift"><pre>session<span class="pl-k">.</span>joinUser { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span> <span class="pl-k">...</span> }
 
 session<span class="pl-k">.</span>isUserJoined() <span class="pl-c">// =&gt; true</span></pre></div>
 
@@ -315,7 +315,7 @@ session<span class="pl-k">.</span>isUserJoined() <span class="pl-c">// =&gt; tru
 <h6>
 <a id="swift-9" class="anchor" href="#swift-9" aria-hidden="true"><span class="octicon octicon-link"></span></a>Swift</h6>
 
-<div class="highlight highlight-source-swift"><pre><span class="pl-k">self</span><span class="pl-k">.</span>session<span class="pl-k">.</span>leaveUser { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span> { <span class="pl-k">...</span> };</pre></div>
+<div class="highlight highlight-source-swift"><pre>session<span class="pl-k">.</span>leaveUser { (error: NSError<span class="pl-k">!</span>) <span class="pl-k">-&gt;</span> <span class="pl-c1">Void</span> <span class="pl-k">in</span> <span class="pl-k">...</span> }</pre></div>
 
 <h3>
 <a id="find-session" class="anchor" href="#find-session" aria-hidden="true"><span class="octicon octicon-link"></span></a>Find Session</h3>
