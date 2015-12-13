@@ -1,5 +1,11 @@
 # Pathshare SDK for iOS
 
+![Pod Version](https://img.shields.io/cocoapods/v/PathshareSDK.svg?style=flat)
+![Pod Platform](https://img.shields.io/badge/platform-ios-green.svg?style=flat)
+![Language](https://img.shields.io/badge/language-objective--c-brightgreen.svg?style=flat)
+![Language](https://img.shields.io/badge/language-swift-brightgreen.svg?style=flat)
+![Pod License](https://img.shields.io/cocoapods/l/PathshareSDK.svg?style=flat)
+
 **Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/developers).
 
 - [Requirements](#requirement)
@@ -15,15 +21,32 @@
 
 ## Requirements
 
-PathshareSDK for iOS supports iOS 8.x and iOS 9.x.
+`PathshareSDK` for iOS supports iOS 8.x and iOS 9.x.
 
 ## Installation
+
+### Cocoapods
+
+Add the following line to your [Podfile](http://guides.cocoapods.org/using/using-cocoapods.html):
+
+```ruby
+pod 'PathshareSDK', '~> 1.0'
+```
+
+Then install `PathshareSDK` into your project by executing the following code:
+
+```ruby
+pod install
+```
+
+### Manual Installation
 
 The installation of the **Pathshare SDK** is simple. Please follow the following steps:
 
 1. Drag and drop the `PathshareSDK.framework` you received upon registration into your project.
 2. Add the `PathshareSDK.framework` to the *Embedded Binaries* in the *general* tab of your target.
 3. Add the `NSLocationAlwaysUsageDescription` and the `NSMotionUsageDescription` keys with the corresponding descriptions to your `Info.plist` file.
+4. If you are building against iOS 9.+, go to your `Project Target` > `Capabilities` > `Background Modes` and enable `Location updates`.
 
 ## Basic Usage
 
@@ -143,6 +166,7 @@ Make sure to save the session after initializing:
 
 session.identifier // => 3fd919fe824d8e7b78e2c11c1570a6f168d2c...
 [session isExpired] // => false
+[session URL] // => https://pathsha.re/6d39d5
 ```
 
 ###### Swift
@@ -151,6 +175,7 @@ session.save { (error: NSError!) -> Void in ... }
 
 session.identifier // => 3fd919fe824d8e7b78e2c11c1570a6f168d2c...
 session.isExpired() // => false
+session.URL() // => https://pathsha.re/6d39d5
 ```
 
 #### Expiration
