@@ -75,7 +75,7 @@
 /*!
  * @brief Find a session using the given identifier.
  * @param identifier The session identifier.
- * @param completionHandler The block to be returned, if successfull.
+ * @param completionHandler The block to be returned, if successful.
  * @since Available in 1.0 and later.
  */
 + (void)findWithIdentifier:(NSString *)identifier
@@ -83,7 +83,7 @@
 
 /*!
  * @brief Remotely saves the session.
- * @param completionHandler The block to be returned, if successfull.
+ * @param completionHandler The block to be returned, if successful.
  * @since Available in 1.0 and later.
  */
 - (void)save:(void(^)(NSError *error))completionHandler;
@@ -97,7 +97,7 @@
 
 /*!
  * @brief Remotely joins the Pathshare user to the session.
- * @param completionHandler The block to be returned, if successfull.
+ * @param completionHandler The block to be returned, if successful.
  * @since Available in 1.0 and later.
  */
 - (void)joinUser:(void(^)(NSError *error))completionHandler;
@@ -111,7 +111,7 @@
 
 /*!
  * @brief Remotely leaves the user from the session.
- * @param completionHandler The block to be returned, if successfull.
+ * @param completionHandler The block to be returned, if successful.
  * @since Available in 1.0 and later.
  */
 - (void)leaveUser:(void(^)(NSError *error))completionHandler;

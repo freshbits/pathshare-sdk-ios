@@ -27,7 +27,7 @@
 /*!
  * @brief Returns a session object with the given identifier if it already exists, nil otherwise.
  * @param identifier A unique identifier for the session.
- * @param completionHandler The block to be returned, if successfull.
+ * @param completionHandler The block to be returned, if successful.
  * @return The Session instance with the given identifier.
  * @since Available in 1.0 and later.
  */
