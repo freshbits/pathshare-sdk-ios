@@ -7,26 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E948900D1BB753AB0005C735 /* Pathshare.plist in Resources */ = {isa = PBXBuildFile; fileRef = E948900C1BB753AB0005C735 /* Pathshare.plist */; settings = {ASSET_TAGS = (); }; };
-		E965D2E71BBB313D00BD03D6 /* PathshareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E965D2E61BBB313D00BD03D6 /* PathshareSDK.framework */; settings = {ASSET_TAGS = (); }; };
-		E965D2E91BBB31E700BD03D6 /* PathshareSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E965D2E61BBB313D00BD03D6 /* PathshareSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E965D2EC1BBB33BF00BD03D6 /* PathshareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E965D2EB1BBB33BF00BD03D6 /* PathshareSDK.framework */; settings = {ASSET_TAGS = (); }; };
+		E948900D1BB753AB0005C735 /* Pathshare.plist in Resources */ = {isa = PBXBuildFile; fileRef = E948900C1BB753AB0005C735 /* Pathshare.plist */; };
 		E98618CE1BAD9E370066D73E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E98618CD1BAD9E370066D73E /* main.m */; };
 		E98618D11BAD9E370066D73E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E98618D01BAD9E370066D73E /* AppDelegate.m */; };
 		E98618D41BAD9E370066D73E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98618D31BAD9E370066D73E /* ViewController.m */; };
 		E98618D71BAD9E370066D73E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E98618D51BAD9E370066D73E /* Main.storyboard */; };
 		E98618D91BAD9E370066D73E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E98618D81BAD9E370066D73E /* Assets.xcassets */; };
 		E98618DC1BAD9E370066D73E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E98618DA1BAD9E370066D73E /* LaunchScreen.storyboard */; };
+		E9A57EEC1C25963D00E06934 /* PathshareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A57EEA1C25963500E06934 /* PathshareSDK.framework */; };
+		E9A57EED1C25963D00E06934 /* PathshareSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9A57EEA1C25963500E06934 /* PathshareSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E948904B1BB871340005C735 /* Embed Frameworks */ = {
+		E9A57EE51C2594ED00E06934 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E965D2E91BBB31E700BD03D6 /* PathshareSDK.framework in Embed Frameworks */,
+				E9A57EED1C25963D00E06934 /* PathshareSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,8 +34,6 @@
 
 /* Begin PBXFileReference section */
 		E948900C1BB753AB0005C735 /* Pathshare.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pathshare.plist; sourceTree = "<group>"; };
-		E965D2E61BBB313D00BD03D6 /* PathshareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PathshareSDK.framework; path = "/Users/jh/iOS/pathshare-sdk-ios/ios-example-app/PathshareSDK.framework"; sourceTree = "<absolute>"; };
-		E965D2EB1BBB33BF00BD03D6 /* PathshareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PathshareSDK.framework; sourceTree = "<group>"; };
 		E98618C91BAD9E370066D73E /* ios-example-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-example-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98618CD1BAD9E370066D73E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E98618CF1BAD9E370066D73E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -47,6 +44,7 @@
 		E98618D81BAD9E370066D73E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E98618DB1BAD9E370066D73E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E98618DD1BAD9E370066D73E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9A57EEA1C25963500E06934 /* PathshareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PathshareSDK.framework; path = Frameworks/PathshareSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E965D2EC1BBB33BF00BD03D6 /* PathshareSDK.framework in Frameworks */,
-				E965D2E71BBB313D00BD03D6 /* PathshareSDK.framework in Frameworks */,
+				E9A57EEC1C25963D00E06934 /* PathshareSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +62,7 @@
 		E965D2EA1BBB33AD00BD03D6 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E965D2EB1BBB33BF00BD03D6 /* PathshareSDK.framework */,
+				E9A57EEA1C25963500E06934 /* PathshareSDK.framework */,
 			);
 			name = frameworks;
 			sourceTree = "<group>";
@@ -130,7 +127,7 @@
 				E98618C51BAD9E370066D73E /* Sources */,
 				E98618C61BAD9E370066D73E /* Frameworks */,
 				E98618C71BAD9E370066D73E /* Resources */,
-				E948904B1BB871340005C735 /* Embed Frameworks */,
+				E9A57EE51C2594ED00E06934 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

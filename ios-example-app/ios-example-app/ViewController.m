@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+static NSString *const kSessionIdentifier = @"session_id";
+
 @interface ViewController ()
 @property (nonatomic, weak) IBOutlet UIButton *createButton;
 @property (nonatomic, weak) IBOutlet UIButton *joinButton;
@@ -22,6 +24,7 @@
 {
     [super viewDidLoad];
     [self initButtons];
+    [self findSession];
 }
 
 - (void)initButtons
@@ -72,6 +75,8 @@
             NSLog(@"Session Leave: Success");
             self.leaveButton.enabled = NO;
             self.createButton.enabled = YES;
+            
+            [self deleteSessionIdentifier];
         }
     }];
 }
@@ -100,8 +105,39 @@
             NSLog(@"Session: Success");
             self.joinButton.enabled = YES;
             self.createButton.enabled = NO;
+            
+            [self saveSessionIdentifier];
         }
     }];
+}
+
+- (void)findSession
+{
+    NSString *sessionIdentifier = [NSUserDefaults.standardUserDefaults objectForKey:kSessionIdentifier];
+    
+    if (!sessionIdentifier) { return; }
+    
+    [Pathshare findSessionWithIdentifier:sessionIdentifier
+                       completionHandler:^(Session *session, NSError *error) {
+                           if (session) {
+                               session.delegate = self;
+                               self.session = session;
+                               
+                               self.createButton.enabled = NO;
+                               self.joinButton.enabled = YES;
+                               self.leaveButton.enabled = NO;
+                           }
+                       }];
+}
+
+- (void)saveSessionIdentifier
+{
+    [NSUserDefaults.standardUserDefaults setObject:self.session.identifier forKey:kSessionIdentifier];
+}
+
+- (void)deleteSessionIdentifier
+{
+    [NSUserDefaults.standardUserDefaults removeObjectForKey:kSessionIdentifier];
 }
 
 #pragma mark - SessionExpirationDelegate

@@ -1,6 +1,0 @@
-framework module PathshareSDK {
-  umbrella header "PathshareSDK.h"
-
-  export *
-  module * { export * }
-}
