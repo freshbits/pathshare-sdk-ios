@@ -11,7 +11,8 @@
 - [Requirements](#requirement)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
-  - [Initialize Pathshare](#init-pathshare)
+  - [Configuration] (#config)
+  - [Initialization](#init-pathshare)
   - [Save Username](#save-username)
   - [Create Session](#create-session)
   - [Join Session](#join-session)
@@ -45,10 +46,15 @@ The installation of the **Pathshare SDK** is simple. Please follow the following
 
 1. Drag and drop the `PathshareSDK.framework` you received upon registration into your project.
 2. Add the `PathshareSDK.framework` to the *Embedded Binaries* in the *general* tab of your target.
-3. Add the `NSLocationAlwaysUsageDescription` and the `NSMotionUsageDescription` keys with the corresponding descriptions to your `Info.plist` file.
-4. If you are building against iOS 9.+, go to your `Project Target` > `Capabilities` > `Background Modes` and enable `Location updates`.
 
 ## Basic Usage
+
+### Project Configuration
+
+In order to allow access to the location services and to use the location services in the background, please add the following configuration in your project:
+
+1. Add the `NSLocationAlwaysUsageDescription` and the `NSMotionUsageDescription` keys with the corresponding descriptions to your `Info.plist` file.
+2. If you are building against iOS 9.+, go to your `Project Target` > `Capabilities` > `Background Modes` and enable `Location updates`.
 
 ### Initialization
 
@@ -291,6 +297,7 @@ To find an existing session, use the `findSessionWithIdentifier:completionHandle
 [Pathshare findSessionWithIdentifier:@"e2e422"
                    completionHandler:^(Session *session, NSError *error) {
                        if (session) {
+                           session.delegate = self;
                            self.session = session;
                        }
                    }];
@@ -300,6 +307,7 @@ To find an existing session, use the `findSessionWithIdentifier:completionHandle
 ```swift
 Pathshare.findSessionWithIdentifier("e2e422") { (session: Session!, error: NSError!) -> Void in
     if session != nil {
+        session.delegate = self
         self.session = session
     }
 }
