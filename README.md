@@ -11,8 +11,8 @@
 - [Requirements](#requirement)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
-  - [Configuration] (#config)
-  - [Initialization](#init-pathshare)
+  - [Configuration] (#configuration)
+  - [Initialization](#initialization)
   - [Save Username](#save-username)
   - [Create Session](#create-session)
   - [Join Session](#join-session)
@@ -49,7 +49,7 @@ The installation of the **Pathshare SDK** is simple. Please follow the following
 
 ## Basic Usage
 
-### Project Configuration
+### Configuration
 
 In order to allow access to the location services and to use the location services in the background, please add the following configuration in your project:
 

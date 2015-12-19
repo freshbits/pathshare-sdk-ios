@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-static NSString *const kSessionIdentifier = @"session_id";
+static NSString *const kSessionIdentifierKey = @"session_id";
 
 @interface ViewController ()
 @property (nonatomic, weak) IBOutlet UIButton *createButton;
@@ -113,7 +113,7 @@ static NSString *const kSessionIdentifier = @"session_id";
 
 - (void)findSession
 {
-    NSString *sessionIdentifier = [NSUserDefaults.standardUserDefaults objectForKey:kSessionIdentifier];
+    NSString *sessionIdentifier = [NSUserDefaults.standardUserDefaults objectForKey:kSessionIdentifierKey];
     
     if (!sessionIdentifier) { return; }
     
@@ -132,12 +132,12 @@ static NSString *const kSessionIdentifier = @"session_id";
 
 - (void)saveSessionIdentifier
 {
-    [NSUserDefaults.standardUserDefaults setObject:self.session.identifier forKey:kSessionIdentifier];
+    [NSUserDefaults.standardUserDefaults setObject:self.session.identifier forKey:kSessionIdentifierKey];
 }
 
 - (void)deleteSessionIdentifier
 {
-    [NSUserDefaults.standardUserDefaults removeObjectForKey:kSessionIdentifier];
+    [NSUserDefaults.standardUserDefaults removeObjectForKey:kSessionIdentifierKey];
 }
 
 #pragma mark - SessionExpirationDelegate
