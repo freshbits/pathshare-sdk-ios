@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CC5D82E0F4134389F98EF7B1A26CDCCAFAB786EF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CC5D82E0F4134389F98EF7B1A26CDCCAFAB786EF" : 0,
+    "1CB5D082E51D8AD9E50BF0544424A593AB91C959" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "28B2BAD4-B65E-4A2A-849C-CC489BDBDFAC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CC5D82E0F4134389F98EF7B1A26CDCCAFAB786EF" : "pathshare-sdk-ios\/",
+    "1CB5D082E51D8AD9E50BF0544424A593AB91C959" : "pathshare-sharing-sdk-ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ios-example-app",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios-example-app-swift\/ios-example-app.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:freshbits\/pathshare-sharing-sdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1CB5D082E51D8AD9E50BF0544424A593AB91C959"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/freshbits\/pathshare-sdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CC5D82E0F4134389F98EF7B1A26CDCCAFAB786EF"
+    }
+  ]
+}

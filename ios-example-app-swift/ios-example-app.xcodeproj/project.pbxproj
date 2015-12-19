@@ -12,9 +12,9 @@
 		E94A9A221BBC0ACA00B8F862 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94A9A201BBC0ACA00B8F862 /* Main.storyboard */; };
 		E94A9A241BBC0ACA00B8F862 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E94A9A231BBC0ACA00B8F862 /* Assets.xcassets */; };
 		E94A9A271BBC0ACA00B8F862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E94A9A251BBC0ACA00B8F862 /* LaunchScreen.storyboard */; };
-		E94A9A351BBC8D9400B8F862 /* Pathshare.plist in Resources */ = {isa = PBXBuildFile; fileRef = E94A9A341BBC8D9400B8F862 /* Pathshare.plist */; settings = {ASSET_TAGS = (); }; };
-		E94A9A371BBC92DE00B8F862 /* PathshareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94A9A361BBC92DE00B8F862 /* PathshareSDK.framework */; settings = {ASSET_TAGS = (); }; };
-		E9D3E5971BBF2A6200FAC00D /* PathshareSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E94A9A361BBC92DE00B8F862 /* PathshareSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E94A9A351BBC8D9400B8F862 /* Pathshare.plist in Resources */ = {isa = PBXBuildFile; fileRef = E94A9A341BBC8D9400B8F862 /* Pathshare.plist */; };
+		E9A57F091C25A37700E06934 /* PathshareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A57F071C25A36E00E06934 /* PathshareSDK.framework */; };
+		E9A57F0A1C25A37700E06934 /* PathshareSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9A57F071C25A36E00E06934 /* PathshareSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E9D3E5971BBF2A6200FAC00D /* PathshareSDK.framework in Embed Frameworks */,
+				E9A57F0A1C25A37700E06934 /* PathshareSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,7 +40,7 @@
 		E94A9A261BBC0ACA00B8F862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E94A9A281BBC0ACA00B8F862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E94A9A341BBC8D9400B8F862 /* Pathshare.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pathshare.plist; sourceTree = "<group>"; };
-		E94A9A361BBC92DE00B8F862 /* PathshareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PathshareSDK.framework; path = Frameworks/PathshareSDK.framework; sourceTree = "<group>"; };
+		E9A57F071C25A36E00E06934 /* PathshareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PathshareSDK.framework; path = Frameworks/PathshareSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94A9A371BBC92DE00B8F862 /* PathshareSDK.framework in Frameworks */,
+				E9A57F091C25A37700E06934 /* PathshareSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +89,7 @@
 		E94A9A2E1BBC0AD400B8F862 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E94A9A361BBC92DE00B8F862 /* PathshareSDK.framework */,
+				E9A57F071C25A36E00E06934 /* PathshareSDK.framework */,
 			);
 			name = frameworks;
 			path = "ios-example-app";
@@ -127,6 +127,11 @@
 				TargetAttributes = {
 					E94A9A181BBC0ACA00B8F862 = {
 						CreatedOnToolsVersion = 7.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
