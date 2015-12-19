@@ -41,5 +41,7 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Put your description here.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Put your description here.</string>
 </dict>
 </plist>
