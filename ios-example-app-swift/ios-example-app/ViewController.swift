@@ -73,14 +73,14 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     }
     
     private func createSession() {
-        let destination = Destination.init()
+        let destination = Destination()
         destination.identifier = "store1234"
         destination.latitude = 47.378178
         destination.longitude = 8.539256
         
-        self.session = Session.init()
+        self.session = Session()
         self.session.name = "Example Session ios"
-        self.session.expirationDate = NSDate.init(timeIntervalSinceNow: 3600)
+        self.session.expirationDate = NSDate(timeIntervalSinceNow: 3600)
         self.session.destination = destination
         self.session.trackingMode = PSTrackingMode.Smart
         self.session.delegate = self

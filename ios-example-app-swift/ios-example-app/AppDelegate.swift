@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initPathshare() {
         let pathshare = NSBundle.mainBundle().pathForResource("Pathshare", ofType:"plist") as String!
-        let config = NSDictionary.init(contentsOfFile: pathshare) as NSDictionary!
+        let config = NSDictionary(contentsOfFile: pathshare) as NSDictionary!
         Pathshare.setAccountToken(config!.valueForKey("account_token") as! String)
     }
 
