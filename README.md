@@ -103,7 +103,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 private func initPathshare() {
     let pathshare = NSBundle.mainBundle().pathForResource("Pathshare", ofType:"plist") as String!
-    let config = NSDictionary.init(contentsOfFile: pathshare) as NSDictionary!
+    let config = NSDictionary(contentsOfFile: pathshare) as NSDictionary!
     Pathshare.setAccountToken(config!.valueForKey("account_token") as! String)
 }
 ```
@@ -149,7 +149,7 @@ session.trackingMode = PSTrackingModeSmart;
 
 ###### Swift
 ```swift
-var session = Session.init()
+var session = Session()
 session.expirationDate = expirationDate
 session.name = "Shopping"
 session.trackingMode = PSTrackingMode.Smart
@@ -210,7 +210,7 @@ session.delegate = self;
 
 ###### Swift
 ```swift
-var session = Session.init()
+var session = Session()
 session.delegate = self
 ```
 
@@ -244,12 +244,12 @@ session.destination = destination;
 
 ###### Swift
 ```swift
-var destination = Destination.init()
+var destination = Destination()
 destination.identifier = "W2342"
 destination.latitude = 47.378178
 destination.longitude = 8.539256
 
-var session = Session.init()
+var session = Session()
 //...
 session.destination = destination
 ```
