@@ -4,7 +4,6 @@
 ![Pod Platform](https://img.shields.io/badge/platform-ios-green.svg?style=flat)
 ![Language](https://img.shields.io/badge/language-objective--c-brightgreen.svg?style=flat)
 ![Language](https://img.shields.io/badge/language-swift-brightgreen.svg?style=flat)
-![Pod License](https://img.shields.io/cocoapods/l/PathshareSDK.svg?style=flat)
 
 **Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/developers).
 
