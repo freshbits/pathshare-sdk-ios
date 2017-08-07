@@ -10,7 +10,7 @@
 - [Requirements](#requirement)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
-  - [Configuration] (#configuration)
+  - [Configuration](#configuration)
   - [Initialization](#initialization)
   - [Save Username](#save-username)
   - [Create Session](#create-session)
