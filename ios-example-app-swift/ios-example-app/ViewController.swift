@@ -35,7 +35,7 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         Pathshare.saveUserName("SDK User ios") { (error) -> Void in
             if error != nil {
                 NSLog("User: Error")
-                NSLog(error.description)
+                NSLog(error!.localizedDescription)
             } else {
                 NSLog("User: Success")
                 self.createSession()
@@ -47,7 +47,7 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         self.session.joinUser { (error) -> Void in
             if error != nil {
                 NSLog("Session Join: Error")
-                NSLog(error.description)
+                NSLog(error!.localizedDescription)
             } else {
                 NSLog("Session Join: Success")
                 self.createButton?.isEnabled = false
@@ -61,7 +61,7 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         self.session.leaveUser { (error) -> Void in
             if error != nil {
                 NSLog("Session Leave: Error")
-                NSLog(error.description)
+                NSLog(error!.localizedDescription)
             } else {
                 NSLog("Session Leave: Success")
                 self.leaveButton?.isEnabled = false
@@ -85,10 +85,10 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         self.session.trackingMode = PSTrackingMode.smart
         self.session.delegate = self
         
-        self.session.save { (error: NSError!) -> Void in
+        self.session.save { (error) -> Void in
             if error != nil {
                 NSLog("Session: Error")
-                NSLog(error.description)
+                NSLog(error!.localizedDescription)
             } else {
                 NSLog("Session: Success")
                 self.joinButton?.isEnabled = true
@@ -96,7 +96,7 @@ class ViewController: UIViewController, SessionExpirationDelegate {
                 
                 self.saveSessionIdentifier()
             }
-        } as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void
+        }
     }
     
     fileprivate func findSession() {
