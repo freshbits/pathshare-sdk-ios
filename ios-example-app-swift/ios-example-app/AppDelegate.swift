@@ -14,25 +14,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         initPathshare()
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication) {}
+    func applicationWillResignActive(_ application: UIApplication) {}
 
-    func applicationDidEnterBackground(application: UIApplication) {}
+    func applicationDidEnterBackground(_ application: UIApplication) {}
 
-    func applicationWillEnterForeground(application: UIApplication) {}
+    func applicationWillEnterForeground(_ application: UIApplication) {}
 
-    func applicationDidBecomeActive(application: UIApplication) {}
+    func applicationDidBecomeActive(_ application: UIApplication) {}
 
-    func applicationWillTerminate(application: UIApplication) {}
+    func applicationWillTerminate(_ application: UIApplication) {}
     
-    private func initPathshare() {
-        let pathshare = NSBundle.mainBundle().pathForResource("Pathshare", ofType:"plist") as String!
-        let config = NSDictionary(contentsOfFile: pathshare) as NSDictionary!
-        Pathshare.setAccountToken(config!.valueForKey("account_token") as! String)
+    fileprivate func initPathshare() {
+        let pathshare = Bundle.main.path(forResource: "Pathshare", ofType:"plist") as String!
+        let config = NSDictionary(contentsOfFile: pathshare!) as NSDictionary!
+        Pathshare.setAccountToken(config!.value(forKey: "account_token") as! String)
     }
 
 }

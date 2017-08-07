@@ -24,14 +24,14 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         findSession()
     }
     
-    private func initButtons() {
-        self.joinButton?.enabled = false
-        self.leaveButton?.enabled = false
+    fileprivate func initButtons() {
+        self.joinButton?.isEnabled = false
+        self.leaveButton?.isEnabled = false
     }
 
     // MARK: IBActions
     
-    @IBAction func createSession(sender: AnyObject) {
+    @IBAction func createSession(_ sender: AnyObject) {
         Pathshare.saveUserName("SDK User ios") { (error) -> Void in
             if error != nil {
                 NSLog("User: Error")
@@ -43,36 +43,36 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         }
     }
     
-    @IBAction func joinSession(sender: AnyObject) {
+    @IBAction func joinSession(_ sender: AnyObject) {
         self.session.joinUser { (error) -> Void in
             if error != nil {
                 NSLog("Session Join: Error")
                 NSLog(error.description)
             } else {
                 NSLog("Session Join: Success")
-                self.createButton?.enabled = false
-                self.joinButton?.enabled = false
-                self.leaveButton?.enabled = true
+                self.createButton?.isEnabled = false
+                self.joinButton?.isEnabled = false
+                self.leaveButton?.isEnabled = true
             }
         }
     }
     
-    @IBAction func leaveSesson(sender: AnyObject) {
+    @IBAction func leaveSesson(_ sender: AnyObject) {
         self.session.leaveUser { (error) -> Void in
             if error != nil {
                 NSLog("Session Leave: Error")
                 NSLog(error.description)
             } else {
                 NSLog("Session Leave: Success")
-                self.leaveButton?.enabled = false
-                self.createButton?.enabled = true
+                self.leaveButton?.isEnabled = false
+                self.createButton?.isEnabled = true
                 
                 self.deleteSessionIdentifier()
             }
         }
     }
     
-    private func createSession() {
+    fileprivate func createSession() {
         let destination = Destination()
         destination.identifier = "store1234"
         destination.latitude = 47.378178
@@ -80,9 +80,9 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         
         self.session = Session()
         self.session.name = "Example Session ios"
-        self.session.expirationDate = NSDate(timeIntervalSinceNow: 3600)
+        self.session.expirationDate = Date(timeIntervalSinceNow: 3600)
         self.session.destination = destination
-        self.session.trackingMode = PSTrackingMode.Smart
+        self.session.trackingMode = PSTrackingMode.smart
         self.session.delegate = self
         
         self.session.save { (error: NSError!) -> Void in
@@ -91,45 +91,44 @@ class ViewController: UIViewController, SessionExpirationDelegate {
                 NSLog(error.description)
             } else {
                 NSLog("Session: Success")
-                self.joinButton?.enabled = true
-                self.createButton?.enabled = false
+                self.joinButton?.isEnabled = true
+                self.createButton?.isEnabled = false
                 
                 self.saveSessionIdentifier()
             }
-        }
+        } as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void as! (Error?) -> Void
     }
     
-    private func findSession() {
-        let sessionIdentifier = NSUserDefaults.standardUserDefaults().objectForKey(sessionIdentifierKey) as? String
+    fileprivate func findSession() {
+        let sessionIdentifier = UserDefaults.standard.object(forKey: sessionIdentifierKey) as? String
         
         guard sessionIdentifier != nil else { return }
         
-        Pathshare .findSessionWithIdentifier(sessionIdentifier) { (session, error) -> Void in
+        Pathshare .findSession(withIdentifier: sessionIdentifier) { (session, error) -> Void in
             if session != nil {
-                session.delegate = self
+                session?.delegate = self
                 self.session = session
                 
-                self.createButton.enabled = false;
-                self.joinButton.enabled = true;
-                self.leaveButton.enabled = false;
+                self.createButton.isEnabled = false;
+                self.joinButton.isEnabled = true;
+                self.leaveButton.isEnabled = false;
             }
         }
     }
     
-    private func saveSessionIdentifier() {
-        NSUserDefaults.standardUserDefaults().setObject(self.session.identifier, forKey: sessionIdentifierKey)
+    fileprivate func saveSessionIdentifier() {
+        UserDefaults.standard.set(self.session.identifier, forKey: sessionIdentifierKey)
     }
     
-    private func deleteSessionIdentifier() {
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(sessionIdentifierKey)
+    fileprivate func deleteSessionIdentifier() {
+        UserDefaults.standard.removeObject(forKey: sessionIdentifierKey)
     }
     
     // MARK: SessionExpirationDelegate
     
     func sessionDidExpire() {
-        self.leaveButton?.enabled = false
-        self.joinButton?.enabled = false
-        self.createButton?.enabled = true
+        self.leaveButton?.isEnabled = false
+        self.joinButton?.isEnabled = false
+        self.createButton?.isEnabled = true
     }
 }
-
