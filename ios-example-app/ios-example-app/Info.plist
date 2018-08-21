@@ -43,5 +43,9 @@
 	<string>Put your description here.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Put your description here.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Put your description here.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Put your description here.</string>
 </dict>
 </plist>

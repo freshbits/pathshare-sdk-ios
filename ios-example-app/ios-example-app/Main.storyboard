@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,19 +18,19 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWv-qu-d00">
-                                <rect key="frame" x="185" y="205" width="230" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="73" y="192" width="230" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="34o-t1-Xsm"/>
                                     <constraint firstAttribute="height" constant="50" id="Hn8-pE-Xhj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Create Session">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Create new Session">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="disabled">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -36,15 +40,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gct-rf-eNF">
-                                <rect key="frame" x="185" y="275" width="230" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="73" y="262" width="230" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5Ev-jP-UEy"/>
                                     <constraint firstAttribute="width" constant="230" id="peM-Ve-IOe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Join Session">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="disabled">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -54,38 +58,59 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7b3-d5-hOZ">
-                                <rect key="frame" x="185" y="345" width="230" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="73" y="332" width="230" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Msj-N8-tM3"/>
                                     <constraint firstAttribute="width" constant="230" id="wvr-9G-eoO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Leave Session">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Invite Customer">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="disabled">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="leaveSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jEY-i9-gMO"/>
+                                    <action selector="inviteCustomer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3ow-Bg-Fk2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZQ-rp-8ei">
+                                <rect key="frame" x="72" y="402" width="230" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="29W-OE-E9v"/>
+                                    <constraint firstAttribute="width" constant="230" id="oL9-kP-Rfo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Leave Session">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="leaveSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1F6-qy-lkh"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="iWv-qu-d00" firstAttribute="leading" secondItem="gct-rf-eNF" secondAttribute="leading" id="2jN-82-HF9"/>
                             <constraint firstItem="gct-rf-eNF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5je-5W-PXz"/>
                             <constraint firstItem="gct-rf-eNF" firstAttribute="top" secondItem="iWv-qu-d00" secondAttribute="bottom" constant="20" id="6hP-CD-yOg"/>
-                            <constraint firstItem="gct-rf-eNF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GuX-y7-jhM"/>
+                            <constraint firstItem="gct-rf-eNF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-46.5" id="GuX-y7-jhM"/>
+                            <constraint firstItem="hZQ-rp-8ei" firstAttribute="top" secondItem="7b3-d5-hOZ" secondAttribute="bottom" constant="20" id="JDh-3n-JeK"/>
                             <constraint firstItem="7b3-d5-hOZ" firstAttribute="leading" secondItem="gct-rf-eNF" secondAttribute="leading" id="Ucu-xo-m10"/>
+                            <constraint firstItem="hZQ-rp-8ei" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gvF-6D-dC1"/>
                             <constraint firstItem="7b3-d5-hOZ" firstAttribute="top" secondItem="gct-rf-eNF" secondAttribute="bottom" constant="20" id="p1Z-Iv-LUb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="createButton" destination="iWv-qu-d00" id="bvN-ui-lM2"/>
+                        <outlet property="inviteButton" destination="7b3-d5-hOZ" id="Vz1-Ks-bos"/>
                         <outlet property="joinButton" destination="gct-rf-eNF" id="UMu-IH-AKi"/>
-                        <outlet property="leaveButton" destination="7b3-d5-hOZ" id="kSv-rf-nQf"/>
+                        <outlet property="leaveButton" destination="hZQ-rp-8ei" id="7jc-Yx-VBI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
