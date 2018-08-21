@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "UserType.h"
 @class Session;
 
 /*!
@@ -37,9 +38,11 @@
 /*!
  * @brief Set the user name.
  * @param name A user name used to identify the user.
+ * @param type A user type to specify the user.
+ * @param phone A user's phone.
  * @param completionHandler The block to be returned, if successfull.
- * @since Available in 1.0 and later.
+ * @since Available in 2.0 and later.
  */
-+ (void)saveUserName:(NSString *)name completionHandler:(void(^)(NSError *error))completionHandler;
++ (void)saveUser:(NSString *)name type:(UserType)type phone:(NSString *)phone completionHandler:(void(^)(NSError *error))completionHandler;
 
 @end
