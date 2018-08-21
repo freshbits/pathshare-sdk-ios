@@ -10,6 +10,7 @@ Snapshots
 Builds/
 Screenshots/
 Frameworks/
+PathshareSDK.framework
 
 .DS_Store
 report.xml
