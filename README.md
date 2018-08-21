@@ -15,13 +15,14 @@
   - [Save Username](#save-username)
   - [Create Session](#create-session)
   - [Join Session](#join-session)
+  - [Invite Customer](#invite-customer)
   - [Leave Session](#leave-session)
   - [Find Session](#find-session)
 
 
 ## Requirements
 
-`PathshareSDK` for iOS supports iOS 8.x, iOS 9.x and iOS 10.x.
+`PathshareSDK` for iOS supports iOS 10.x and iOS 11.x.
 
 ## Installation
 
@@ -30,7 +31,7 @@
 Add the following line to your [Podfile](http://guides.cocoapods.org/using/using-cocoapods.html):
 
 ```ruby
-pod 'PathshareSDK', '~> 1.0'
+pod 'PathshareSDK', '~> 2.0'
 ```
 
 Then install `PathshareSDK` into your project by executing the following code:
@@ -52,8 +53,8 @@ The installation of the **Pathshare SDK** is simple. Please follow the following
 
 In order to allow access to the location services and to use the location services in the background, please add the following configuration in your project:
 
-1. Add the `NSLocationAlwaysUsageDescription` and the `NSMotionUsageDescription` keys with the corresponding descriptions to your `Info.plist` file.
-2. If you are building against iOS 9.+, go to your `Project Target` > `Capabilities` > `Background Modes` and enable `Location updates`.
+1. Add the `NSLocationAlwaysUsageDescription`, the `NSMotionUsageDescription`, `NSLocationAlwaysAndWhenInUseUsageDescription` and the `NSLocationWhenInUseUsageDescription` keys with the corresponding descriptions to your `Info.plist` file.
+2. If you are building against iOS 10.+, go to your `Project Target` > `Capabilities` > `Background Modes` and enable `Location updates`.
 
 ### Initialization
 
@@ -107,14 +108,16 @@ private func initPathshare() {
 }
 ```
 
-### Save Username
+### Save User
 
 Before creating a session, you need to set a username:
 
 ###### Objective-C
 ```Objective-c
-[Pathshare saveUserName:@"Candice"
-      completionHandler:^(NSError *error) {
+[Pathshare saveUser:@"SDK User ios"
+               type:UserTypeTechnician
+              phone:@"+14159495533"
+  completionHandler:^(NSError *error) {
           if (error) {
               // ...
           } else {
@@ -126,7 +129,7 @@ Before creating a session, you need to set a username:
 
 ###### Swift
 ```swift
-Pathshare.saveUserName("SDK User ios") { (error: NSError!) -> Void in
+Pathshare.saveUser("SDK User", type: .technician, phone: "+12345678901") { (error: NSError!) -> Void in
     if error != nil {
         // ...
     } else {
@@ -134,6 +137,15 @@ Pathshare.saveUserName("SDK User ios") { (error: NSError!) -> Void in
     }
 }
 ```
+
+There are different types of users for specific industries:
+
+User Types                  | Description
+----------------------------|------------------------------------------------------------
+`TECHNICIAN`, `MOTORIST`    | For roadside assitance industry or similar
+`DRIVER`, `RECIPIENT`       | For delivery services or similar
+`INVESTIGATOR`, `CLIENT`    | For legal services industry or similar
+
 ### Create Session
 
 Use the session initializer to create a session:
@@ -255,27 +267,61 @@ session.destination = destination
 
 ### Join Session
 
-To join the session you created, call the `joinUser:` method on the session object:
+To join the session you created, call the `join:` method on the session object:
 
 ###### Objective-C
 ```objective-c
-[session joinUser:^(NSError *error) { ... }];
+[session join:^(NSError *error) { ... }];
 
 [session isUserJoined] // => true
 ```
 
 ###### Swift
 ```swift
-session.joinUser { (error: NSError!) -> Void in ... }
+session.join { (error: NSError!) -> Void in ... }
 
 session.isUserJoined() // => true
 ```
 
 This call will add your Pathshare user to the session and you will be able to see his location in realtime on a map in the Pathshare Professional web interface.
 
+### Invite customer
+
+To invite a customer to the session, call the `inviteUser:` method on the session object:
+
+###### Objective-C
+```objective-c
+[self.session inviteUserWithName:@"Customer"
+                            type:UserTypeClient
+                           email:@"customer@me.com"
+                           phone:@"+12345678901"
+               completionHandler:^(NSURL *url, NSError *error) {
+    if (error) {
+        // ...
+    } else {
+        // ...
+        NSLog(@"Invitation URL: %@", url.absoluteString);
+    }
+}];
+```
+
+###### Swift
+```swift
+session.inviteUser(withName: "Customer", type: .client, email: "customer@me.com", phone: "+12345678901") { (url, error) in
+    if error != nil {
+        // ...
+    } else {
+        // ...
+        NSLog("Invitation URL: \(String(describing: url?.absoluteString))")
+    }
+}
+```
+
+This call will create a customer user and return an invitation URL that can be sent to the customer using your preffered channel. The customer will then see the driver's location in realtime as well as the ETA in a white-labeled view with your corporate identity.
+
 ### Leave Session
 
-In order to stop sending user locations and remove the user from the session, call the `leaveUser:` method:
+In order to stop sending user locations and remove the user from the session, call the `leave:` method:
 
 ###### Objective-C
 ```objective-c
