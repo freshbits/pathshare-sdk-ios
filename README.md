@@ -7,7 +7,7 @@
 
 **Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/professional/developers).
 
-![pathshare-sdk-ios](/assets/ios-example-app.png =600x)
+<img src="/assets/ios-example-app.png" height="600">
 
 - [Requirements](#requirement)
 - [Installation](#installation)
@@ -323,7 +323,7 @@ This call will create a customer user and return an invitation URL that can be s
 
 The customer will be able to enjoy the full realtime experience in the web browser of their smartphone:
 
-![pathshare-sdk-ios](/assets/web-view-customer.png =600x)
+<img src="/assets/web-view-customer.png" height="600">
 
 ### Leave Session
 
