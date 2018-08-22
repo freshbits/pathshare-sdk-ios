@@ -149,7 +149,6 @@
 				TargetAttributes = {
 					E98618C81BAD9E370066D73E = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 25MGJ59774;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -320,7 +319,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 25MGJ59774;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios-example-app",
@@ -339,7 +338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 25MGJ59774;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ios-example-app",
