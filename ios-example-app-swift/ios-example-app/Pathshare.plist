@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>account_token</key>
-	<string>place your token here</string>
+	<string>Your API key here.</string>
 </dict>
 </plist>

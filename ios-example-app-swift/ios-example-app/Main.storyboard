@@ -90,7 +90,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="leaveSesson:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wwa-aT-Jbw"/>
+                                    <action selector="leaveSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rNb-S9-522"/>
                                 </connections>
                             </button>
                         </subviews>

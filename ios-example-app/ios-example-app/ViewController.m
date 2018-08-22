@@ -31,14 +31,12 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 - (void)initButtons
 {
     self.createButton.layer.cornerRadius = 3.f;
-    
     self.joinButton.layer.cornerRadius = 3.f;
-    self.joinButton.enabled = NO;
-    
     self.inviteButton.layer.cornerRadius = 3.f;
-    self.inviteButton.enabled = NO;
-    
     self.leaveButton.layer.cornerRadius = 3.f;
+    
+    self.joinButton.enabled = NO;
+    self.inviteButton.enabled = NO;
     self.leaveButton.enabled = NO;
 }
 
@@ -104,9 +102,10 @@ static NSString *const kSessionIdentifierKey = @"session_id";
             NSLog(@"%@", error);
         } else {
             NSLog(@"Session Leave: Success");
-            self.leaveButton.enabled = NO;
-            self.inviteButton.enabled = NO;
             self.createButton.enabled = YES;
+            self.joinButton.enabled = NO;
+            self.inviteButton.enabled = NO;
+            self.leaveButton.enabled = NO;
             
             [self deleteSessionIdentifier];
         }
@@ -119,8 +118,8 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 {
     Destination *destination = [[Destination alloc] init];
     destination.identifier = @"store1234";
-    destination.latitude = 47.378178;
-    destination.longitude = 8.539256;
+    destination.latitude = 37.7875694;
+    destination.longitude = -122.4112239;
     
     self.session = [[Session alloc] init];
     self.session.name = @"Example Session ios";
@@ -137,6 +136,7 @@ static NSString *const kSessionIdentifierKey = @"session_id";
             NSLog(@"Session: Success");
             self.joinButton.enabled = YES;
             self.createButton.enabled = NO;
+            self.leaveButton.enabled = YES;
             
             [self saveSessionIdentifier];
         }
@@ -151,12 +151,17 @@ static NSString *const kSessionIdentifierKey = @"session_id";
     
     [Pathshare findSessionWithIdentifier:sessionID
                        completionHandler:^(Session *session, NSError *error) {
-                           if (session) {
+                           if (session && !session.isExpired) {
                                session.delegate = self;
                                self.session = session;
                                
                                self.createButton.enabled = NO;
                                self.joinButton.enabled = YES;
+                               self.inviteButton.enabled = NO;
+                               self.leaveButton.enabled = YES;
+                           } else {
+                               self.createButton.enabled = YES;
+                               self.joinButton.enabled = NO;
                                self.inviteButton.enabled = NO;
                                self.leaveButton.enabled = NO;
                            }

@@ -26,16 +26,15 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     }
     
     fileprivate func initButtons() {
-        self.createButton?.layer.cornerRadius = 3.0
+        self.createButton.layer.cornerRadius = 3.0
+        self.joinButton.layer.cornerRadius = 3.0
+        self.inviteButton.layer.cornerRadius = 3.0
+        self.leaveButton.layer.cornerRadius = 3.0
         
-        self.joinButton?.isEnabled = false
-        self.joinButton?.layer.cornerRadius = 3.0
-        
-        self.inviteButton?.isEnabled = false
-        self.inviteButton?.layer.cornerRadius = 3.0
-        
-        self.leaveButton?.isEnabled = false
-        self.leaveButton?.layer.cornerRadius = 3.0
+        self.createButton.isEnabled = true
+        self.joinButton.isEnabled = false
+        self.inviteButton.isEnabled = false
+        self.leaveButton.isEnabled = false
     }
 
     // MARK: IBActions
@@ -59,10 +58,10 @@ class ViewController: UIViewController, SessionExpirationDelegate {
                 NSLog(error!.localizedDescription)
             } else {
                 NSLog("Session Join: Success")
-                self.createButton?.isEnabled = false
-                self.joinButton?.isEnabled = false
-                self.inviteButton?.isEnabled = true
-                self.leaveButton?.isEnabled = true
+                self.createButton.isEnabled = false
+                self.joinButton.isEnabled = false
+                self.inviteButton.isEnabled = true
+                self.leaveButton.isEnabled = true
             }
         }
     }
@@ -74,23 +73,24 @@ class ViewController: UIViewController, SessionExpirationDelegate {
                 NSLog(error!.localizedDescription)
             } else {
                 NSLog("Invite Customer: Success")
-                NSLog("Invitation URL: \(String(describing: url?.absoluteString))")
-                self.inviteButton?.isEnabled = false
-                self.leaveButton?.isEnabled = true
+                NSLog("Invitation URL: \(String(describing: url!.absoluteString))")
+                self.inviteButton.isEnabled = false
+                self.leaveButton.isEnabled = true
             }
         }
     }
     
-    @IBAction func leaveSesson(_ sender: AnyObject) {
+    @IBAction func leaveSession(_ sender: AnyObject) {
         self.session.leave { (error) -> Void in
             if error != nil {
                 NSLog("Session Leave: Error")
                 NSLog(error!.localizedDescription)
             } else {
                 NSLog("Session Leave: Success")
-                self.leaveButton?.isEnabled = false
-                self.inviteButton?.isEnabled = false
-                self.createButton?.isEnabled = true
+                self.createButton.isEnabled = true
+                self.joinButton.isEnabled = false
+                self.inviteButton.isEnabled = false
+                self.leaveButton.isEnabled = false
                 
                 self.deleteSessionIdentifier()
             }
@@ -116,8 +116,9 @@ class ViewController: UIViewController, SessionExpirationDelegate {
                 NSLog(error!.localizedDescription)
             } else {
                 NSLog("Session: Success")
-                self.joinButton?.isEnabled = true
-                self.createButton?.isEnabled = false
+                self.joinButton.isEnabled = true
+                self.createButton.isEnabled = false
+                self.leaveButton.isEnabled = true
                 
                 self.saveSessionIdentifier()
             }
@@ -130,13 +131,19 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         guard sessionIdentifier != nil else { return }
         
         Pathshare.findSession(withIdentifier: sessionIdentifier) { (session, error) -> Void in
-            if session != nil {
+            if session != nil && !(session?.isExpired())! {
                 session?.delegate = self
                 self.session = session
                 
-                self.createButton.isEnabled = false;
-                self.joinButton.isEnabled = true;
-                self.leaveButton.isEnabled = false;
+                self.createButton.isEnabled = false
+                self.joinButton.isEnabled = true
+                self.inviteButton.isEnabled = false
+                self.leaveButton.isEnabled = true
+            } else {
+                self.createButton.isEnabled = true
+                self.joinButton.isEnabled = false
+                self.inviteButton.isEnabled = false
+                self.leaveButton.isEnabled = false
             }
         }
     }
@@ -154,9 +161,9 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     func sessionDidExpire() {
         deleteSessionIdentifier()
         
-        self.leaveButton?.isEnabled = false
-        self.joinButton?.isEnabled = false
-        self.inviteButton?.isEnabled = false
-        self.createButton?.isEnabled = true
+        self.leaveButton.isEnabled = false
+        self.joinButton.isEnabled = false
+        self.inviteButton.isEnabled = false
+        self.createButton.isEnabled = true
     }
 }
