@@ -30,21 +30,14 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 
 - (void)initButtons
 {
-    if ([self hasActiveSession]) {
-        self.createButton.enabled = NO;
-        self.inviteButton.enabled = YES;
-        self.leaveButton.enabled = YES;
-    } else {
-        self.createButton.enabled = YES;
-        self.joinButton.enabled = NO;
-        self.inviteButton.enabled = NO;
-        self.leaveButton.enabled = NO;
-    }
-    
     self.createButton.layer.cornerRadius = 3.f;
     self.joinButton.layer.cornerRadius = 3.f;
     self.inviteButton.layer.cornerRadius = 3.f;
     self.leaveButton.layer.cornerRadius = 3.f;
+    
+    self.joinButton.enabled = NO;
+    self.inviteButton.enabled = NO;
+    self.leaveButton.enabled = NO;
 }
 
 #pragma mark - IBAction
@@ -109,9 +102,10 @@ static NSString *const kSessionIdentifierKey = @"session_id";
             NSLog(@"%@", error);
         } else {
             NSLog(@"Session Leave: Success");
-            self.leaveButton.enabled = NO;
-            self.inviteButton.enabled = NO;
             self.createButton.enabled = YES;
+            self.joinButton.enabled = NO;
+            self.inviteButton.enabled = NO;
+            self.leaveButton.enabled = NO;
             
             [self deleteSessionIdentifier];
         }
@@ -142,6 +136,7 @@ static NSString *const kSessionIdentifierKey = @"session_id";
             NSLog(@"Session: Success");
             self.joinButton.enabled = YES;
             self.createButton.enabled = NO;
+            self.leaveButton.enabled = YES;
             
             [self saveSessionIdentifier];
         }
@@ -156,12 +151,17 @@ static NSString *const kSessionIdentifierKey = @"session_id";
     
     [Pathshare findSessionWithIdentifier:sessionID
                        completionHandler:^(Session *session, NSError *error) {
-                           if (session) {
+                           if (session && !session.isExpired) {
                                session.delegate = self;
                                self.session = session;
                                
                                self.createButton.enabled = NO;
                                self.joinButton.enabled = YES;
+                               self.inviteButton.enabled = NO;
+                               self.leaveButton.enabled = YES;
+                           } else {
+                               self.createButton.enabled = YES;
+                               self.joinButton.enabled = NO;
                                self.inviteButton.enabled = NO;
                                self.leaveButton.enabled = NO;
                            }
@@ -176,11 +176,6 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 - (void)deleteSessionIdentifier
 {
     [NSUserDefaults.standardUserDefaults removeObjectForKey:kSessionIdentifierKey];
-}
-
-- (BOOL)hasActiveSession
-{
-    return self.session.isSaved && !self.session.isExpired;
 }
 
 #pragma mark - SessionExpirationDelegate methods
