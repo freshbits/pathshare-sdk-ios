@@ -30,16 +30,21 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 
 - (void)initButtons
 {
+    if ([self hasActiveSession]) {
+        self.createButton.enabled = NO;
+        self.inviteButton.enabled = YES;
+        self.leaveButton.enabled = YES;
+    } else {
+        self.createButton.enabled = YES;
+        self.joinButton.enabled = NO;
+        self.inviteButton.enabled = NO;
+        self.leaveButton.enabled = NO;
+    }
+    
     self.createButton.layer.cornerRadius = 3.f;
-    
     self.joinButton.layer.cornerRadius = 3.f;
-    self.joinButton.enabled = NO;
-    
     self.inviteButton.layer.cornerRadius = 3.f;
-    self.inviteButton.enabled = NO;
-    
     self.leaveButton.layer.cornerRadius = 3.f;
-    self.leaveButton.enabled = NO;
 }
 
 #pragma mark - IBAction
@@ -119,8 +124,8 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 {
     Destination *destination = [[Destination alloc] init];
     destination.identifier = @"store1234";
-    destination.latitude = 47.378178;
-    destination.longitude = 8.539256;
+    destination.latitude = 37.7875694;
+    destination.longitude = -122.4112239;
     
     self.session = [[Session alloc] init];
     self.session.name = @"Example Session ios";
@@ -171,6 +176,11 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 - (void)deleteSessionIdentifier
 {
     [NSUserDefaults.standardUserDefaults removeObjectForKey:kSessionIdentifierKey];
+}
+
+- (BOOL)hasActiveSession
+{
+    return self.session.isSaved && !self.session.isExpired;
 }
 
 #pragma mark - SessionExpirationDelegate methods
