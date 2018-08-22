@@ -5,7 +5,10 @@
 ![Language](https://img.shields.io/badge/language-objective--c-brightgreen.svg?style=flat)
 ![Language](https://img.shields.io/badge/language-swift-brightgreen.svg?style=flat)
 
-**Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/developers).
+**Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/professional/developers).
+
+![pathshare-sdk-ios](/Assets/ios-example-app.png)
+![pathshare-sdk-ios](/Assets/web-view-customer.png)
 
 - [Requirements](#requirement)
 - [Installation](#installation)
