@@ -8,7 +8,6 @@
 **Pathshare** is a realtime location sharing platform. For more information please visit the [Pathshare Developer Page](https://pathsha.re/professional/developers).
 
 ![pathshare-sdk-ios](/assets/ios-example-app.png)
-![pathshare-sdk-ios](/assets/web-view-customer.png)
 
 - [Requirements](#requirement)
 - [Installation](#installation)
@@ -321,6 +320,10 @@ session.inviteUser(withName: "Customer", type: .client, email: "customer@me.com"
 ```
 
 This call will create a customer user and return an invitation URL that can be sent to the customer using your preffered channel. The customer will then see the driver's location in realtime as well as the ETA in a white-labeled view with your corporate identity.
+
+The customer will be able to enjoy the full realtime experience in the web browser of their smartphone:
+
+![pathshare-sdk-ios](/assets/web-view-customer.png)
 
 ### Leave Session
 
