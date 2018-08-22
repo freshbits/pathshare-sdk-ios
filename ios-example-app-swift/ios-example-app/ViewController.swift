@@ -16,6 +16,7 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var inviteButton: UIButton!
     @IBOutlet weak var leaveButton: UIButton!
 
     override func viewDidLoad() {
@@ -25,14 +26,22 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     }
     
     fileprivate func initButtons() {
+        self.createButton?.layer.cornerRadius = 3.0
+        
         self.joinButton?.isEnabled = false
+        self.joinButton?.layer.cornerRadius = 3.0
+        
+        self.inviteButton?.isEnabled = false
+        self.inviteButton?.layer.cornerRadius = 3.0
+        
         self.leaveButton?.isEnabled = false
+        self.leaveButton?.layer.cornerRadius = 3.0
     }
 
     // MARK: IBActions
     
     @IBAction func createSession(_ sender: AnyObject) {
-        Pathshare.saveUserName("SDK User ios") { (error) -> Void in
+        Pathshare.saveUser("SDK User", type: .technician, phone: "+12345678901") { (error) -> Void in
             if error != nil {
                 NSLog("User: Error")
                 NSLog(error!.localizedDescription)
@@ -44,7 +53,7 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     }
     
     @IBAction func joinSession(_ sender: AnyObject) {
-        self.session.joinUser { (error) -> Void in
+        self.session.join { (error) -> Void in
             if error != nil {
                 NSLog("Session Join: Error")
                 NSLog(error!.localizedDescription)
@@ -52,19 +61,35 @@ class ViewController: UIViewController, SessionExpirationDelegate {
                 NSLog("Session Join: Success")
                 self.createButton?.isEnabled = false
                 self.joinButton?.isEnabled = false
+                self.inviteButton?.isEnabled = true
+                self.leaveButton?.isEnabled = true
+            }
+        }
+    }
+    
+    @IBAction func inviteCustomer(_ sender: AnyObject) {
+        self.session.inviteUser(withName: "Customer", type: .client, email: "customer@me.com", phone: "+12345678901") { (url, error) in
+            if error != nil {
+                NSLog("Invite Customer: Error")
+                NSLog(error!.localizedDescription)
+            } else {
+                NSLog("Invite Customer: Success")
+                NSLog("Invitation URL: \(String(describing: url?.absoluteString))")
+                self.inviteButton?.isEnabled = false
                 self.leaveButton?.isEnabled = true
             }
         }
     }
     
     @IBAction func leaveSesson(_ sender: AnyObject) {
-        self.session.leaveUser { (error) -> Void in
+        self.session.leave { (error) -> Void in
             if error != nil {
                 NSLog("Session Leave: Error")
                 NSLog(error!.localizedDescription)
             } else {
                 NSLog("Session Leave: Success")
                 self.leaveButton?.isEnabled = false
+                self.inviteButton?.isEnabled = false
                 self.createButton?.isEnabled = true
                 
                 self.deleteSessionIdentifier()
@@ -104,7 +129,7 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         
         guard sessionIdentifier != nil else { return }
         
-        Pathshare .findSession(withIdentifier: sessionIdentifier) { (session, error) -> Void in
+        Pathshare.findSession(withIdentifier: sessionIdentifier) { (session, error) -> Void in
             if session != nil {
                 session?.delegate = self
                 self.session = session
@@ -127,8 +152,11 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     // MARK: SessionExpirationDelegate
     
     func sessionDidExpire() {
+        deleteSessionIdentifier()
+        
         self.leaveButton?.isEnabled = false
         self.joinButton?.isEnabled = false
+        self.inviteButton?.isEnabled = false
         self.createButton?.isEnabled = true
     }
 }

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PSTrackingMode.h"
+#import "UserType.h"
 @class Destination;
 
 /*!
@@ -98,9 +99,25 @@
 /*!
  * @brief Remotely joins the Pathshare user to the session.
  * @param completionHandler The block to be returned, if successful.
- * @since Available in 1.0 and later.
+ * @since Available in 2.0 and later.
  */
-- (void)joinUser:(void(^)(NSError *error))completionHandler;
+- (void)join:(void(^)(NSError *error))completionHandler;
+
+/*!
+ * @brief Remotely joins the Pathshare user to the session.
+ * @param name User's name.
+ * @param type User's type.
+ * @param email User's email.
+ * @param phone User's phone.
+ * @param completionHandler The block to be returned, if successful.
+ * @since Available in 2.0 and later.
+ */
+- (void)inviteUserWithName:(NSString *)name
+                      type:(UserType)type
+                     email:(NSString *)email
+                     phone:(NSString *)phone
+         completionHandler:(void(^)(NSURL *url, NSError *error))completionHandler;
+
 
 /*!
  * @brief Checks, if user has successfully joined.
@@ -112,9 +129,9 @@
 /*!
  * @brief Remotely leaves the user from the session.
  * @param completionHandler The block to be returned, if successful.
- * @since Available in 1.0 and later.
+ * @since Available in 2.0 and later.
  */
-- (void)leaveUser:(void(^)(NSError *error))completionHandler;
+- (void)leave:(void(^)(NSError *error))completionHandler;
 
 /*!
  * @brief Checks, whether the session is expired.

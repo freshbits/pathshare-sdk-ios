@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {}
     
     fileprivate func initPathshare() {
-        let pathshare = Bundle.main.path(forResource: "Pathshare", ofType:"plist") as String!
-        let config = NSDictionary(contentsOfFile: pathshare!) as NSDictionary!
+        let pathshare = Bundle.main.path(forResource: "Pathshare", ofType:"plist") as String?
+        let config = NSDictionary(contentsOfFile: pathshare!) as NSDictionary?
         Pathshare.setAccountToken(config!.value(forKey: "account_token") as! String)
     }
 
