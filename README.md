@@ -33,7 +33,7 @@
 Add the following line to your [Podfile](http://guides.cocoapods.org/using/using-cocoapods.html):
 
 ```ruby
-pod 'PathshareSDK', '~> 2.0'
+pod 'PathshareSDK', '~> 2.1'
 ```
 
 Then install `PathshareSDK` into your project by executing the following code:
@@ -92,6 +92,7 @@ Next, add the following to the `application:didFinishLaunchingWithOptions:` meth
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:pathshare];
 
     [Pathshare setAccountToken:config[@"account_token"]];
+    [Pathshare setTrackingMode:PSTrackingModeSmart];
 }
 ```
 ###### Swift
@@ -107,8 +108,18 @@ private func initPathshare() {
     let pathshare = NSBundle.mainBundle().pathForResource("Pathshare", ofType:"plist") as String!
     let config = NSDictionary(contentsOfFile: pathshare) as NSDictionary!
     Pathshare.setAccountToken(config!.valueForKey("account_token") as! String)
+    Pathshare.setTrackingMode(.smart)
 }
 ```
+
+Optionally, you can specify a tracking mode to configure the behavior of the location tracker. The following tracking modes are available:
+
+Tracking Mode      | Description
+-------------------|------------------------------------------------------------
+`PSTrackingModeSmart`            | Adapts intelligently to the environment and usage of the device. Includes awareness of battery level, travel speed and motion activity.
+`PSTrackingModeEco`              | Static mode providing constant tracking data with very low accuracy (several kilometers) and great distance between single locations and ensuring maximum battery life.
+`PSTrackingModeApproximate`      | Static mode providing constant tracking data with low accuracy (several hundred meters) and middle distance between single locations. Useful when a low battery drain is a important criteria.
+`PSTrackingModeAccurate`         | Static mode providing constant tracking with the highest accuracy possible (few meters) and small distances between locations. Useful for scenarios where a high accuracy is an essential requirement.
 
 ### Save User
 
@@ -118,7 +129,7 @@ Before creating a session, you need to set a username:
 ```Objective-c
 [Pathshare saveUser:@"SDK User ios"
                type:UserTypeTechnician
-              phone:@"+14159495533"
+              phone:@"+12345678901"
   completionHandler:^(NSError *error) {
           if (error) {
               // ...
@@ -157,7 +168,6 @@ Use the session initializer to create a session:
 Session *session = [[Session alloc] init];
 session.expirationDate = expirationDate;
 session.name = @"Shopping";
-session.trackingMode = PSTrackingModeSmart;
 ```
 
 ###### Swift
@@ -165,17 +175,9 @@ session.trackingMode = PSTrackingModeSmart;
 var session = Session()
 session.expirationDate = expirationDate
 session.name = "Shopping"
-session.trackingMode = PSTrackingMode.Smart
 ```
 
-A session must have an expiration date and a name. Optionally, you can specify a tracking mode to configure the behavior of the location tracker. The following tracking modes are available:
-
-Tracking Mode      | Description
--------------------|------------------------------------------------------------
-`PSTrackingModeSmart`            | Adapts intelligently to the environment and usage of the device. Includes awareness of battery level, travel speed and motion activity.
-`PSTrackingModeEco`              | Static mode providing constant tracking data with very low accuracy (several kilometers) and great distance between single locations and ensuring maximum battery life.
-`PSTrackingModeApproximate`      | Static mode providing constant tracking data with low accuracy (several hundred meters) and middle distance between single locations. Useful when a low battery drain is a important criteria.
-`PSTrackingModeAccurate`         | Static mode providing constant tracking with the highest accuracy possible (few meters) and small distances between locations. Useful for scenarios where a high accuracy is an essential requirement.
+A session must have an expiration date and a name. You can create multiple sessions at the same time, the SDK will manage them for you.
 
 Make sure to save the session after initializing:
 
