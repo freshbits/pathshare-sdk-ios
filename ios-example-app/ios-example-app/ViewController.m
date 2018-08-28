@@ -125,7 +125,6 @@ static NSString *const kSessionIdentifierKey = @"session_id";
     self.session.name = @"Example Session ios";
     self.session.expirationDate = [[NSDate alloc] initWithTimeIntervalSinceNow:3600];
     self.session.destination = destination;
-    self.session.trackingMode = PSTrackingModeSmart;
     self.session.delegate = self;
     
     [self.session save:^(NSError *error) {
