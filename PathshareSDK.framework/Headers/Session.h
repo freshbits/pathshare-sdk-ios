@@ -60,13 +60,6 @@
 @property (nonatomic, strong) Destination *destination;
 
 /*!
- * @brief The tracking mode.
- * @discussion The tracking mode corresponds to the gps tracker setting.
- * @since Available in 1.0 and later.
- */
-@property (nonatomic) PSTrackingMode trackingMode;
-
-/*!
  * @brief The session expiration delegate.
  * @discussion In case a session expires, the delegate of the session will get notified using the corresponding method.
  * @since Available in 1.0 and later.

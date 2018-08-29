@@ -107,7 +107,6 @@ class ViewController: UIViewController, SessionExpirationDelegate {
         self.session.name = "Example Session ios"
         self.session.expirationDate = Date(timeIntervalSinceNow: 3600)
         self.session.destination = destination
-        self.session.trackingMode = PSTrackingMode.smart
         self.session.delegate = self
         
         self.session.save { (error) -> Void in

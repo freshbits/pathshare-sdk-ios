@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "UserType.h"
+#import "PSTrackingMode.h"
 @class Session;
 
 /*!
@@ -24,6 +25,13 @@
  * @since Available in 1.0 and later.
  */
 + (void)setAccountToken:(NSString *)token;
+
+/*!
+ * @brief The tracking mode.
+ * @discussion The tracking mode corresponds to the gps tracker setting.
+ * @since Available in 2.1 and later.
+ */
++ (void)setTrackingMode:(PSTrackingMode)trackingMode;
 
 /*!
  * @brief Returns a session object with the given identifier if it already exists, nil otherwise.

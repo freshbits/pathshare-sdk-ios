@@ -38,6 +38,7 @@
     NSDictionary *config = [[NSDictionary alloc] initWithContentsOfFile:pathshare];
 
     [Pathshare setAccountToken:config[@"account_token"]];
+    [Pathshare setTrackingMode:PSTrackingModeSmart];
 }
 
 @end
