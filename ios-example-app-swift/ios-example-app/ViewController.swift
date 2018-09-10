@@ -40,7 +40,7 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     // MARK: IBActions
     
     @IBAction func createSession(_ sender: AnyObject) {
-        Pathshare.saveUser("SDK User", type: .technician, phone: "+12345678901") { (error) -> Void in
+        Pathshare.saveUser("SDK User", type: .technician, email: "me@email.com", phone: "+12345678901") { (error) -> Void in
             if error != nil {
                 NSLog("User: Error")
                 NSLog(error!.localizedDescription)
@@ -67,7 +67,7 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     }
     
     @IBAction func inviteCustomer(_ sender: AnyObject) {
-        self.session.inviteUser(withName: "Customer", type: .client, email: "customer@me.com", phone: "+12345678901") { (url, error) in
+        self.session.inviteUser(withName: "Customer", type: .client, email: "customer@email.com", phone: "+12345678901") { (url, error) in
             if error != nil {
                 NSLog("Invite Customer: Error")
                 NSLog(error!.localizedDescription)

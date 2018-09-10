@@ -33,7 +33,7 @@
 Add the following line to your [Podfile](http://guides.cocoapods.org/using/using-cocoapods.html):
 
 ```ruby
-pod 'PathshareSDK', '~> 2.1'
+pod 'PathshareSDK', '~> 2.2'
 ```
 
 Then install `PathshareSDK` into your project by executing the following code:
@@ -129,6 +129,7 @@ Before creating a session, you need to set a username:
 ```Objective-c
 [Pathshare saveUser:@"SDK User ios"
                type:UserTypeTechnician
+              email:@"me@email.com"
               phone:@"+12345678901"
   completionHandler:^(NSError *error) {
           if (error) {
@@ -142,7 +143,7 @@ Before creating a session, you need to set a username:
 
 ###### Swift
 ```swift
-Pathshare.saveUser("SDK User", type: .technician, phone: "+12345678901") { (error: NSError!) -> Void in
+Pathshare.saveUser("SDK User", type: .technician, email: "me@email.com", phone: "+12345678901") { (error: NSError!) -> Void in
     if error != nil {
         // ...
     } else {
@@ -150,6 +151,8 @@ Pathshare.saveUser("SDK User", type: .technician, phone: "+12345678901") { (erro
     }
 }
 ```
+
+The email address can be `nil`.
 
 There are different types of users for specific industries:
 

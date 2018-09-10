@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = 'PathshareSDK'
-  s.version             = '2.1.0'
+  s.version             = '2.2.0'
   s.summary             = 'The Pathshare iOS SDK, for integrating realtime location sharing capabilities into your iOS application.'
   s.license             = { :type => "Apache license", :file => "LICENSE" }
   s.authors             = {"Jaro Habr"=>"jaro@freshbits.ch", "Thomas Maurer"=>"thomas@freshbits.ch", "Stefan Schurgast"=>"stefan@freshbits.ch"}

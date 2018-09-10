@@ -46,6 +46,7 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 {
     [Pathshare saveUser:@"SDK User ios"
                    type:UserTypeTechnician
+                  email:@"me@email.com"
                   phone:@"+14159495533"
       completionHandler:^(NSError *error) {
               if (error) {
@@ -79,7 +80,7 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 {
     [self.session inviteUserWithName:@"Customer"
                                 type:UserTypeClient
-                               email:@"customer@me.com"
+                               email:@"customer@email.com"
                                phone:@"12345678901"
                    completionHandler:^(NSURL *url, NSError *error) {
         if (error) {
