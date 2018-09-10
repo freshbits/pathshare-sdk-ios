@@ -80,7 +80,7 @@ static NSString *const kSessionIdentifierKey = @"session_id";
 {
     [self.session inviteUserWithName:@"Customer"
                                 type:UserTypeClient
-                               email:@"customer@me.com"
+                               email:@"customer@email.com"
                                phone:@"12345678901"
                    completionHandler:^(NSURL *url, NSError *error) {
         if (error) {
