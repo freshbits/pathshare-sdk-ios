@@ -24,7 +24,7 @@
 
 ## Requirements
 
-`PathshareSDK` for iOS supports iOS 10.x and iOS 11.x.
+`PathshareSDK` for iOS supports iOS 10.x, 11.x and 12.x.
 
 ## Installation
 
