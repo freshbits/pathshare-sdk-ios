@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func initPathshare() {
         let pathshare = Bundle.main.path(forResource: "Pathshare", ofType:"plist") as String?
         let config = NSDictionary(contentsOfFile: pathshare!) as NSDictionary?
-        Pathshare.setAccountToken(config!.value(forKey: "account_token") as! String)
+        Pathshare.setAccountToken(config!.value(forKey: "account_token") as? String)
         Pathshare.setTrackingMode(.smart)
     }
 

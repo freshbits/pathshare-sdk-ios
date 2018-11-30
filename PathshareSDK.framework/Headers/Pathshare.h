@@ -49,6 +49,7 @@
  * @param type A user type to specify the user.
  * @param phone A user's email.
  * @param phone A user's phone.
+ * @param phone A user's image in png format.
  * @param completionHandler The block to be returned, if successfull.
  * @since Available in 2.0 and later.
  */
@@ -56,6 +57,7 @@
             type:(UserType)type
            email:(NSString *)email
            phone:(NSString *)phone
+           image:(UIImage *)image
 completionHandler:(void(^)(NSError *error))completionHandler;
 
 @end

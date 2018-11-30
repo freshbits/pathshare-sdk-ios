@@ -48,6 +48,7 @@ static NSString *const kSessionIdentifierKey = @"session_id";
                    type:UserTypeTechnician
                   email:@"me@email.com"
                   phone:@"+14159495533"
+                  image:[UIImage imageNamed:@"face"]
       completionHandler:^(NSError *error) {
               if (error) {
                   NSLog(@"User: Error");
@@ -82,6 +83,7 @@ static NSString *const kSessionIdentifierKey = @"session_id";
                                 type:UserTypeClient
                                email:@"customer@email.com"
                                phone:@"12345678901"
+                   canSetDestination:YES
                    completionHandler:^(NSURL *url, NSError *error) {
         if (error) {
             NSLog(@"Invite Customer: Error");
@@ -188,6 +190,8 @@ static NSString *const kSessionIdentifierKey = @"session_id";
     self.joinButton.enabled = NO;
     self.inviteButton.enabled = NO;
     self.createButton.enabled = YES;
+    
+    NSLog(@"Session: Expired.");
 }
 
 @end
