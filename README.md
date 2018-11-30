@@ -33,7 +33,7 @@
 Add the following line to your [Podfile](http://guides.cocoapods.org/using/using-cocoapods.html):
 
 ```ruby
-pod 'PathshareSDK', '~> 2.2'
+pod 'PathshareSDK', '~> 2.3'
 ```
 
 Then install `PathshareSDK` into your project by executing the following code:
@@ -131,6 +131,7 @@ Before creating a session, you need to set a username:
                type:UserTypeTechnician
               email:@"me@email.com"
               phone:@"+12345678901"
+              image:[UIImage imageNamed:@"image"]
   completionHandler:^(NSError *error) {
           if (error) {
               // ...
@@ -143,7 +144,11 @@ Before creating a session, you need to set a username:
 
 ###### Swift
 ```swift
-Pathshare.saveUser("SDK User", type: .technician, email: "me@email.com", phone: "+12345678901") { (error: NSError!) -> Void in
+Pathshare.saveUser("SDK User",
+                    type: .technician,
+                    email: "me@email.com",
+                    phone: "+12345678901",
+                    image: UIImage.init(named: "image")) { (error: NSError!) -> Void in
     if error != nil {
         // ...
     } else {
@@ -153,6 +158,8 @@ Pathshare.saveUser("SDK User", type: .technician, email: "me@email.com", phone: 
 ```
 
 The email address can be `nil`.
+
+Use the same method `Pathshare.saveUser()` to create or update the user.
 
 There are different types of users for specific industries:
 
@@ -302,6 +309,7 @@ To invite a customer to the session, call the `inviteUser:` method on the sessio
                             type:UserTypeClient
                            email:@"customer@me.com"
                            phone:@"+12345678901"
+               canSetDestination:YES
                completionHandler:^(NSURL *url, NSError *error) {
     if (error) {
         // ...
@@ -314,7 +322,11 @@ To invite a customer to the session, call the `inviteUser:` method on the sessio
 
 ###### Swift
 ```swift
-session.inviteUser(withName: "Customer", type: .client, email: "customer@me.com", phone: "+12345678901") { (url, error) in
+session.inviteUser(withName: "Customer",
+                    type: .client,
+                    email: "customer@me.com",
+                    phone: "+12345678901",
+                    canSetDestination: true) { (url, error) in
     if error != nil {
         // ...
     } else {
