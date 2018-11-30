@@ -102,6 +102,7 @@
  * @param type User's type.
  * @param email User's email.
  * @param phone User's phone.
+ * @param canSetDestination Flag that allows the user to update the destination of the session.
  * @param completionHandler The block to be returned, if successful.
  * @since Available in 2.0 and later.
  */
@@ -109,6 +110,7 @@
                       type:(UserType)type
                      email:(NSString *)email
                      phone:(NSString *)phone
+         canSetDestination:(bool)canSetDestination
          completionHandler:(void(^)(NSURL *url, NSError *error))completionHandler;
 
 
