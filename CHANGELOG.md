@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.3.1 - 2019-01-04
+### Changed
+- Added bitcode support
+- Minor updates
+
 ## 2.3.0 - 2018-11-30
 ### Changed
 - Added image support to user
