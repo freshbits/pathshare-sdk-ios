@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.2 - 2020-01-31
+### Changed
+- Minor updates
+
 ## 2.3.1 - 2019-01-04
 ### Changed
 - Added bitcode support
