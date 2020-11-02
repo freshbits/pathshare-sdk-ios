@@ -10,8 +10,7 @@
 		E948900D1BB753AB0005C735 /* Pathshare.plist in Resources */ = {isa = PBXBuildFile; fileRef = E948900C1BB753AB0005C735 /* Pathshare.plist */; };
 		E9624F9C212C7BA9000AF3CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9624F9B212C7BA9000AF3CA /* Main.storyboard */; };
 		E9624F9E212C7BE6000AF3CA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9624F9D212C7BE6000AF3CA /* ViewController.m */; };
-		E9624FA6212C83F6000AF3CA /* PathshareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9624FA5212C83F6000AF3CA /* PathshareSDK.framework */; };
-		E9624FA8212C83FA000AF3CA /* PathshareSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9624FA5212C83F6000AF3CA /* PathshareSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E97A8F752550C13B00569136 /* PathshareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97A8F742550C13B00569136 /* PathshareSDK.framework */; };
 		E98618CE1BAD9E370066D73E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E98618CD1BAD9E370066D73E /* main.m */; };
 		E98618D11BAD9E370066D73E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E98618D01BAD9E370066D73E /* AppDelegate.m */; };
 		E98618D91BAD9E370066D73E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E98618D81BAD9E370066D73E /* Assets.xcassets */; };
@@ -25,7 +24,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E9624FA8212C83FA000AF3CA /* PathshareSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,7 +34,7 @@
 		E948900C1BB753AB0005C735 /* Pathshare.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pathshare.plist; sourceTree = "<group>"; };
 		E9624F9B212C7BA9000AF3CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E9624F9D212C7BE6000AF3CA /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E9624FA5212C83F6000AF3CA /* PathshareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PathshareSDK.framework; sourceTree = "<group>"; };
+		E97A8F742550C13B00569136 /* PathshareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PathshareSDK.framework; path = ../../PathshareSDK.framework; sourceTree = "<group>"; };
 		E98618C91BAD9E370066D73E /* ios-example-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-example-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98618CD1BAD9E370066D73E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E98618CF1BAD9E370066D73E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9624FA6212C83F6000AF3CA /* PathshareSDK.framework in Frameworks */,
+				E97A8F752550C13B00569136 /* PathshareSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +60,7 @@
 		E965D2EA1BBB33AD00BD03D6 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E9624FA5212C83F6000AF3CA /* PathshareSDK.framework */,
+				E97A8F742550C13B00569136 /* PathshareSDK.framework */,
 			);
 			name = frameworks;
 			sourceTree = "<group>";
@@ -162,6 +160,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -326,7 +325,7 @@
 					"$(PROJECT_DIR)/ios-example-app/Frameworks",
 				);
 				INFOPLIST_FILE = "ios-example-app/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.freshbits.ios-example-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -345,7 +344,7 @@
 					"$(PROJECT_DIR)/ios-example-app/Frameworks",
 				);
 				INFOPLIST_FILE = "ios-example-app/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.freshbits.ios-example-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";

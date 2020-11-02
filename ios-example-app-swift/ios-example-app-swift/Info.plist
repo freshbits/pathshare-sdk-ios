@@ -22,6 +22,14 @@
 	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Put your description here.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Put your description here.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Put your description here.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Put your description here.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -41,13 +49,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Put your description here.</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Put your description here.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Put your description here.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Put your description here.</string>
 </dict>
 </plist>
