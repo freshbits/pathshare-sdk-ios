@@ -56,7 +56,7 @@ The installation of the **Pathshare SDK** is simple. Please follow the following
 In order to allow access to the location services and to use the location services in the background, please add the following configuration in your project:
 
 1. Add the `NSLocationAlwaysUsageDescription`, the `NSMotionUsageDescription`, `NSLocationAlwaysAndWhenInUseUsageDescription` and the `NSLocationWhenInUseUsageDescription` keys with the corresponding descriptions to your `Info.plist` file.
-2. If you are building against iOS 10.+, go to your `Project Target` > `Capabilities` > `Background Modes` and enable `Location updates`.
+2. If you are building against iOS 11.+, go to your `Project Target` > `Capabilities` > `Background Modes` and enable `Location updates`.
 
 ### Initialization
 
