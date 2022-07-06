@@ -24,7 +24,7 @@
 
 ## Requirements
 
-`PathshareSDK` for iOS supports iOS 10.x, 11.x, 12.x and 13.x.
+`PathshareSDK` for iOS supports iOS 12.x, 13.x, 14.x, 15.x and 16.x.
 
 ## Installation
 
@@ -46,8 +46,8 @@ pod install
 
 The installation of the **Pathshare SDK** is simple. Please follow the following steps:
 
-1. Drag and drop the `PathshareSDK.framework` you received upon registration into your project.
-2. Add the `PathshareSDK.framework` to the *Embedded Binaries* in the *general* tab of your target.
+1. Drag and drop the `PathshareSDK.xcframework` you received upon registration into your project.
+2. Add the `PathshareSDK.xcframework` to the *Embedded Binaries* in the *general* tab of your target.
 
 ## Basic Usage
 
