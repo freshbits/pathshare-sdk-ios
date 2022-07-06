@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.source              = { :git => 'https://github.com/freshbits/pathshare-sdk-ios.git', :tag => s.version.to_s }
   s.platform            = :ios, '12.0'
-  s.preserve_paths      = 'PathshareSDK.framework'
-  s.vendored_frameworks = 'PathshareSDK.framework'
+  s.preserve_paths      = 'PathshareSDK.xcframework'
+  s.vendored_frameworks = 'PathshareSDK.xcframework'
 end
