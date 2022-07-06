@@ -108,8 +108,8 @@ class ViewController: UIViewController, SessionExpirationDelegate {
     fileprivate func createSession() {
         let destination = Destination()
         destination.identifier = "store1234"
-        destination.latitude = 47.378178
-        destination.longitude = 8.539256
+        destination.latitude = 37.7875694
+        destination.longitude = -122.4112239
         
         self.session = Session()
         self.session.name = "Example Session ios"

@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.3.3 - 2022-06-05
+### Changed
+- Fixed issue with deprecated `UIWebView`
+- Changed from `.framework` to `.xcframework`
+- Minor updates
+
 ## 2.3.2 - 2020-01-31
 ### Changed
 - Minor updates
